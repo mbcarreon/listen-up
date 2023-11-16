@@ -28,5 +28,6 @@ Route::middleware([
 });
 
 // pakieddit na lang po yung route
-Route::get('/artist/{query}', [MusicBrainzController::class, 'searchArtist']);
-Route::get('/song/{query}', [MusicBrainzController::class, 'searchSong']);
+Route::get('/artist/search/{query}', [MusicBrainzController::class, 'searchArtist']);
+Route::get('/song/search/{query}', [MusicBrainzController::class, 'searchSong']);
+Route::get('/song/{id}', [MusicBrainzController::class, 'getSong']);
