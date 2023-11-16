@@ -7,28 +7,36 @@ use GuzzleHttp\Client;
 
 class MusicBrainzController extends Controller
 {
-    public function searchArtist($query)
+    private function fetchData($endpoint, $query)
     {
         $baseUrl = 'https://musicbrainz.org/ws/2/';
         $client = new Client();
-        $response = $client->get($baseUrl . 'artist', [
+        $response = $client->get($baseUrl . $endpoint, [
             'query' => [
                 'query' => $query,
                 'fmt' => 'json',
                 'limit' => 10,
             ],
         ]);
+
         $data = json_decode($response->getBody(), true);
+
+        return $data;
+    }
+
+    public function searchArtist($query)
+    {
+        $data = $this->fetchData('artist', $query);
 
         if (!empty($data['artists'])) {
             $artists = $data['artists'];
             return $artists;
-            
+
             // pakieddit na lang po san siya i reredirect
             // return view('dashboard', ['artist' => $artist]);
         } else {
             return ['error' => 'Artist not found'];
-            
+
             // pakieddit na lang po san siya i reredirect
             // return view('dashboard', ['error' => 'Artist not found']);
         }
@@ -36,16 +44,7 @@ class MusicBrainzController extends Controller
 
     public function searchSong($query)
     {
-        $baseUrl = 'https://musicbrainz.org/ws/2/';
-        $client = new Client();
-        $response = $client->get($baseUrl . 'recording', [
-            'query' => [
-                'query' => 'recording:' . $query,
-                'fmt' => 'json',
-                'limit' => 10,
-            ],
-        ]);
-        $data = json_decode($response->getBody(), true);
+        $data = $this->fetchData('recording', 'recording:' . $query);
 
         if (!empty($data['recordings'])) {
             $songs = $data['recordings'];
