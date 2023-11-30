@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\SettingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +28,10 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.form');
+Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');
+
+Route::get('/settings', [SettingsController::class, 'showSettings'])->name('settings.show');
+Route::post('/settings/profile/update', [SettingsController::class, 'updateProfile'])->name('settings.updateProfile');
+Route::post('/settings/system/update', [SettingsController::class, 'updateSystemSettings'])->name('settings.updateSystemSettings'); 
