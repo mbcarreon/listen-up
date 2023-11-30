@@ -18,14 +18,8 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="">
+                    <x-nav-link href="/contact">
                         {{ __('Contact') }}
-                    </x-nav-link>
-                </div>
-
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="">
-                        {{ __('Settings') }}
                     </x-nav-link>
                 </div>
             </div>
