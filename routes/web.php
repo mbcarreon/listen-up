@@ -27,6 +27,10 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/homepage', function () {
+        return view('homepage');
+    })->name('homepage');
 });
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.form');
