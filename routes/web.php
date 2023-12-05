@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +29,8 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/homepage', function () {
-        return view('homepage');
-    })->name('homepage');
+
+    Route::get('redirects', 'App\Http\Controllers\HomeController@index');
 });
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.form');
