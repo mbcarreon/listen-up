@@ -1,6 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h1>Welcome, {{ auth()->user()->name }}</h1>
+        <p><img src="{{ asset(auth()->user()->profile_image) }}" alt="Profile Image" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;"></p>
         <p>Bio: {{ auth()->user()->bio }}</p>
         <p>Location: {{ auth()->user()->location }}</p>
         <p>Birthdate: {{ auth()->user()->birthdate }}</p>
