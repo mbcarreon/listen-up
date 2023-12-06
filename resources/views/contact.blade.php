@@ -4,55 +4,6 @@
     <title>Contact Us</title>
 @endsection
 
-@section('style')
-<style>
-        /* body {
-            display: flex;
-            justify-content: space-between;
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        .column {
-            flex: 1;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-right: 20px;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        label {
-            margin-bottom: 8px;
-        }
-
-        input,
-        textarea {
-            margin-bottom: 16px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            background-color: #4caf50;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        } */
-    </style>
-@endsection
-
 @section('content')
     <div style="display: flex; justify-content: space-between; width: 80%; margin: 0 auto;">
         <div style="width: 50%;">
