@@ -22,7 +22,8 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                        <form action="{{ route('user.update-profile') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('user.update-profile') }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="row mb-3">
                                     <label for="name" class="col-sm-2 col-form-label">Name</label>
@@ -70,15 +71,15 @@
             </div>
 
 
-           <script type="text/javascript">
-    function update() {
-        $('#name').val('{{ auth()->user()->name }}');
-        $('#bio').val('{{ auth()->user()->bio }}');
-        $('#location').val('{{ auth()->user()->location }}');
-        $('#birthdate').val('{{ auth()->user()->birthdate }}');
-        $('#set-up-profile').modal('show');
-    }
-</script>
+            <script type="text/javascript">
+                function update() {
+                    $('#name').val('{{ auth()->user()->name }}');
+                    $('#bio').val('{{ auth()->user()->bio }}');
+                    $('#location').val('{{ auth()->user()->location }}');
+                    $('#birthdate').val('{{ auth()->user()->birthdate }}');
+                    $('#set-up-profile').modal('show');
+                }
+            </script>
 
     </x-slot>
 </x-app-layout>
