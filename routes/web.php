@@ -27,6 +27,8 @@ Route::middleware([
     'verified',
 ])->group(function () {
 
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
     Route::get('/user/musicList', function () {
         return view('user/musicList');
     })->name('user/musicList');
@@ -35,12 +37,14 @@ Route::middleware([
         return view('admin/admin-musicList');
     })->name('admin/admin-musicList');
 
-    Route::get('redirects', 'App\Http\Controllers\HomeController@index');
+    Route::get('redirects', 'App\Http\Controllers\HomeController@showAllUsers');
 });
+
+Route::get('/users/all', [HomeController::class, 'showAllUsers'])->name('users');
 
 Route::get('/musiclist/all', [MusicListController::class, 'AllMusicList'])->name('musiclist');
 Route::post('/mlist/add', [MusicListController::class, 'AddMusicList'])->name('add.music');
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.form');
 Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');
