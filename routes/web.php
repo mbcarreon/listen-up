@@ -26,9 +26,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-
+    //route for navbar
     Route::get('/user/musicList', function () {
         return view('user/musicList');
     })->name('user/musicList');
@@ -37,14 +35,18 @@ Route::middleware([
         return view('admin/admin-musicList');
     })->name('admin/admin-musicList');
 
+    //for Users
+    Route::get('/home', [HomeController::class, 'showAllUsers'])->name('home');
     Route::get('redirects', 'App\Http\Controllers\HomeController@showAllUsers');
+    Route::get('/users/all', [HomeController::class, 'showAllUsers'])->name('users');
+
+    Route::post('/user/update-profile', [HomeController::class, 'updateProfile'])->name('user.update-profile');
 });
 
-Route::get('/users/all', [HomeController::class, 'showAllUsers'])->name('users');
-
+//for viewing music list
 Route::get('/musiclist/all', [MusicListController::class, 'AllMusicList'])->name('musiclist');
 Route::post('/mlist/add', [MusicListController::class, 'AddMusicList'])->name('add.music');
 
-
+//for contacts
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.form');
 Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');
