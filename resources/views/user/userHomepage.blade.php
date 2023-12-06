@@ -1,6 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
         <h1>Welcome, {{ auth()->user()->name }}</h1>
+        <p><img src="{{ asset(auth()->user()->profile_image) }}" alt="Profile Image"
+                style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;"></p>
         <p>Bio: {{ auth()->user()->bio }}</p>
         <p>Location: {{ auth()->user()->location }}</p>
         <p>Birthdate: {{ auth()->user()->birthdate }}</p>
@@ -8,7 +10,7 @@
 
         <div class="card">
             <div class="card-header">
-                Other users
+                Visit other users profile
             </div>
             <table class="table table-hover">
                 <thead>
@@ -24,8 +26,7 @@
 
                     @foreach ($users as $user)
                     <tr>
-                        <!-- Remove the <th> and <td> for Id -->
-                        <td><a href="#">{{$user->name}}</a></td>
+                        <td><a href="{{ route('user.show', ['id' => $user->id]) }}">{{ $user->name }}</a></td>
                     </tr>
                     @endforeach
                 </tbody>

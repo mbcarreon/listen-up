@@ -42,6 +42,7 @@ Route::middleware([
     Route::get('/users/all', [HomeController::class, 'showAllUsers'])->name('users');
 
     Route::post('/user/update-profile', [HomeController::class, 'updateProfile'])->name('user.update-profile');
+    Route::get('/user/{id}', [HomeController::class, 'show'])->name('user.show');
 });
 
 //for viewing music list

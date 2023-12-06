@@ -3,7 +3,8 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Profile') }}
         </h2>
-        <p>Profile Image: <img src="{{ asset(auth()->user()->profile_image) }}" alt="Profile Image" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;"></p>
+        <p><img src="{{ asset(auth()->user()->profile_image) }}" alt="Profile Image" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;"></p>
+        <h3>Name: {{ auth()->user()->name }}</h3>
         <p>Bio: {{ auth()->user()->bio }}</p>
         <p>Location: {{ auth()->user()->location }}</p>
         <p>Birthdate: {{ auth()->user()->birthdate }}</p>
