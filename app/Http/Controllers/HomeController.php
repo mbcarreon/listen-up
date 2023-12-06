@@ -67,4 +67,11 @@ class HomeController extends Controller {
   
       return redirect()->back()->with('success', 'Profile updated successfully');
   }
+  public function show($id)
+    {
+        $user = User::findOrFail($id);
+
+        // You can return a view with the user details
+        return view('user.viewProfile', compact('user'));
+    }
 }
