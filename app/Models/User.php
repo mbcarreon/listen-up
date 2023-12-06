@@ -30,6 +30,7 @@ class User extends Authenticatable
         'bio',
         'location',
         'birthdate',
+        'profile_image',
     ];
 
     /**

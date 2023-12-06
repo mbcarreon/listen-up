@@ -3,7 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Profile') }}
         </h2>
-        <h3>Name: {{ auth()->user()->name }}</h3>
+        <p>Profile Image: <img src="{{ asset(auth()->user()->profile_image) }}" alt="Profile Image" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;"></p>
         <p>Bio: {{ auth()->user()->bio }}</p>
         <p>Location: {{ auth()->user()->location }}</p>
         <p>Birthdate: {{ auth()->user()->birthdate }}</p>
@@ -57,6 +57,15 @@
                                     <div class="col-sm-10">
                                         <input type="date" class="form-control" id="birthdate" name="birthdate">
                                         @error('birthdate')
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="profile_image" class="col-sm-2 col-form-label">Profile Image</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" class="form-control" id="profile_image" name="profile_image">
+                                        @error('profile_image')
                                         <span class="text-danger">{{$message}}</span>
                                         @enderror
                                     </div>
