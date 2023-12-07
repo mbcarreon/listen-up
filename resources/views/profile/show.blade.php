@@ -10,7 +10,6 @@
         <p>Birthdate: {{ auth()->user()->birthdate }}</p>
 
         <a onClick="update()" href="javascript:void(0)" class="btn btn-info">Set up Profile</a>
-        <a href="}" class="btn btn-danger">Remove</a>
         </td>
 
         <div>
