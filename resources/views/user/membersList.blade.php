@@ -7,10 +7,6 @@
             </div>
             <table class="table table-hover">
                 <thead>
-                    <tr>
-                        <!-- Remove the <th> for Id -->
-                        <th scope="col">Name</th>
-                    </tr>
                 </thead>
                 <tbody>
                     @php
