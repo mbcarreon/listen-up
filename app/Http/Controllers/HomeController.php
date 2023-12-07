@@ -31,17 +31,15 @@ class HomeController extends Controller {
 
    public function updateProfile(Request $request) {
       $user = Auth::user();
-  
-      // Validate the incoming request data
+      
       $request->validate([
           'name' => 'nullable|string|max:255',
           'bio' => 'nullable|string|max:255',
           'location' => 'nullable|string|max:255',
           'birthdate' => 'nullable|date',
-          'profile_image' => 'nullable|mimes:jpg,jpeg,png', // Make the profile image optional
+          'profile_image' => 'nullable|mimes:jpg,jpeg,png', 
       ]);
   
-      // Check if a new profile image is provided
       if ($request->hasFile('profile_image')) {
           $profile_image = $request->file('profile_image');
   
@@ -53,11 +51,9 @@ class HomeController extends Controller {
   
           $profile_image->move($up_loc, $image_name);
   
-          // Update the user's profile image
           $user->update(['profile_image' => $last_img]);
       }
   
-      // Update the user's profile information (excluding profile image if not provided)
       $user->update([
           'name' => $request->input('name'),
           'bio' => $request->input('bio'),
@@ -71,7 +67,6 @@ class HomeController extends Controller {
     {
         $user = User::findOrFail($id);
 
-        // You can return a view with the user details
         return view('user.viewProfile', compact('user'));
     }
 }
