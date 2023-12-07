@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('location')->nullable();
             $table->date('birthdate')->nullable();
             $table->string('profile_image')->nullable();
+            $table->json('liked_songs')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

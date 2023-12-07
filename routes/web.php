@@ -48,6 +48,9 @@ Route::middleware([
 
     Route::post('/user/update-profile', [HomeController::class, 'updateProfile'])->name('user.update-profile');
     Route::get('/user/{id}', [HomeController::class, 'show'])->name('user.show');
+
+    Route::post('/add-to-liked-songs', 'App\Http\Controllers\HomeController@addToLikedSongs');
+    Route::get('/get-liked-songs', 'App\Http\Controllers\HomeController@getLikedSongs');
 });
 
 //for viewing music list

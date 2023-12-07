@@ -69,4 +69,29 @@ class HomeController extends Controller {
 
         return view('user.viewProfile', compact('user'));
     }
+
+    public function addToLikedSongs(Request $request) {
+      $user = Auth::user();
+      $likedSongs = $user->liked_songs ?? [];
+  
+      // Get the song title from the request
+      $songTitle = $request->input('songTitle');
+  
+      // Add the song to the liked songs array if it's not already there
+      if (!in_array($songTitle, $likedSongs)) {
+          $likedSongs[] = $songTitle;
+  
+          // Update the user's record in the database
+          $user->update(['liked_songs' => $likedSongs]);
+      }
+  
+      return response()->json(['message' => 'Song added to liked songs.']);
+  }
+
+  public function getLikedSongs() {
+   $user = Auth::user();
+   $likedSongs = $user->liked_songs ?? [];
+
+   return response()->json(['likedSongs' => $likedSongs]);
+}
 }
