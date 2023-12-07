@@ -85,6 +85,11 @@
                     </div>
                 </div>
             </div>
+            <br>
+            <p>Favorite Film</p>
+            <hr>
+            <p>Recent Likes</p>
+            <hr>
 
 
             <script type="text/javascript">
@@ -96,6 +101,7 @@
                     $('#set-up-profile').modal('show');
                 }
             </script>
+
 
     </x-slot>
 </x-app-layout>
