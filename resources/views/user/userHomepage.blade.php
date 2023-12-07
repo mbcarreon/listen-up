@@ -26,7 +26,7 @@
 
                     @foreach ($users as $user)
                     <tr>
-                        <td><a href="{{ route('user.show', ['id' => $user->id]) }}">{{ $user->name }}</a></td>
+                        <td><a href="{{ route('user.show', ['id' => $user->id]) }}"><img src="{{ asset($user->profile_image) }}" alt="Profile Image" style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">{{ $user->name }}</a></td>
                     </tr>
                     @endforeach
                 </tbody>

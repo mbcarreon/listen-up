@@ -4,9 +4,12 @@
             {{ __('Music List') }}
         </h1>
 
-<h3> Here is the list of your music, {{ auth()->user()->name }}</h3>
-
-<a class="btn btn-success" onClick="add()" href="javascript:void(0)"> Add music</a>
+        <h3>
+            <img src="{{ asset(auth()->user()->profile_image) }}" alt="Profile Image"
+                style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; margin-right: 5px;">
+            {{ auth()->user()->name }} - Here is the list of your music
+        </h3>
+        <a class="btn btn-success" onClick="add()" href="javascript:void(0)"> Add music</a>
         <br>
         <br>
         <table class="table table-hover">
@@ -17,9 +20,9 @@
                     <th scope="col">Author</th>
                 </tr>
             </thead>
-          
+
         </table>
-     
+
         <div>
             <!-- Modal -->
             <div class="modal fade" id="music-modal" tabindex="-1" aria-hidden="true">
