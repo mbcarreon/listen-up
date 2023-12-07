@@ -20,7 +20,7 @@ class MusicListController extends Controller
             'brand_name' => 'required|unique:brands|max:255',
             'author' => 'required|unique:brands|max:255',
         ], [
-            'brand_name.required' => 'please input brand name',
+            'brand_name.required' => 'Please input brand name',
             'brand_name.max' => 'Brand name must be less the 255 characters',
 
         ]);

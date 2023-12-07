@@ -47,5 +47,10 @@
         @stack('modals')
 
         @livewireScripts
-    </body>
+        
+    <footer style="text-align: center">
+        <medium>&copy; 2023 Developed by <b>ELEC3C-Group 1.</b> </medium>
+    </footer>
+
+</body>
 </html>
