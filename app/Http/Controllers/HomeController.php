@@ -26,7 +26,7 @@ class HomeController extends Controller {
          ->where('role', '!=', 1)
          ->get();
 
-      return view('user.userHomePage', compact('users'));
+      return view('user.membersList', compact('users'));
    }
 
    public function updateProfile(Request $request) {

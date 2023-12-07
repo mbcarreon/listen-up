@@ -32,14 +32,19 @@ Route::middleware([
         return view('user/musicList');
     })->name('user/musicList');
 
+    Route::get('/user/membersList', function () {
+        return view('user/membersList');
+    })->name('user/membersList');
+
     Route::get('/admin/admin-musicList', function () {
         return view('admin/admin-musicList');
     })->name('admin/admin-musicList');
 
     //for Users
-    Route::get('/home', [HomeController::class, 'showAllUsers'])->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('redirects', 'App\Http\Controllers\HomeController@showAllUsers');
     Route::get('/users/all', [HomeController::class, 'showAllUsers'])->name('users');
+    Route::get('/user/membersList', [HomeController::class, 'showAllUsers'])->name('/user/membersList');
 
     Route::post('/user/update-profile', [HomeController::class, 'updateProfile'])->name('user.update-profile');
     Route::get('/user/{id}', [HomeController::class, 'show'])->name('user.show');
