@@ -5,8 +5,14 @@
         </h1>
 
         <h3>
+            @if(auth()->user()->profile_image)
             <img src="{{ asset(auth()->user()->profile_image) }}" alt="Profile Image"
-                style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; margin-right: 5px;">
+                style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;">
+            @else
+            <!-- Default image if no profile image is set -->
+            <img src="{{ asset('image/profile/default-image.png') }}" alt="Default Profile Image"
+                style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">
+            @endif
             {{ auth()->user()->name }} - Here is the list of your music
         </h3>
         <a class="btn btn-success" onClick="add()" href="javascript:void(0)"> Add music</a>

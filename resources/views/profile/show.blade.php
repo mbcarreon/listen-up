@@ -3,7 +3,14 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Profile') }}
         </h2>
-        <p><img src="{{ asset(auth()->user()->profile_image) }}" alt="Profile Image" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;"></p>
+        @if(auth()->user()->profile_image)
+        <img src="{{ asset(auth()->user()->profile_image) }}" alt="Profile Image"
+            style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;">
+        @else
+        <!-- Default image if no profile image is set -->
+        <img src="{{ asset('image/profile/default-image.png') }}" alt="Default Profile Image"
+            style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;">
+        @endif
         <h3>Name: {{ auth()->user()->name }}</h3>
         <p>Bio: {{ auth()->user()->bio }}</p>
         <p>Location: {{ auth()->user()->location }}</p>
