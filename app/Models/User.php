@@ -31,6 +31,7 @@ class User extends Authenticatable
         'location',
         'birthdate',
         'profile_image',
+        'liked_songs',
     ];
 
     /**
@@ -52,6 +53,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'liked_songs' => 'array',
     ];
 
     /**

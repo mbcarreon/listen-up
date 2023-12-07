@@ -90,6 +90,7 @@
             <hr>
             <p>Recent Likes</p>
             <hr>
+        <ul id="likedSongsList"></ul>
 
 
             <script type="text/javascript">
@@ -100,6 +101,27 @@
                     $('#birthdate').val('{{ auth()->user()->birthdate }}');
                     $('#set-up-profile').modal('show');
                 }
+
+                function displayLikedSongs() {
+        fetch('/get-liked-songs')
+            .then(response => response.json())
+            .then(data => {
+                const likedSongsList = document.getElementById('likedSongsList');
+                const likedSongs = data.likedSongs || [];
+
+                if (likedSongs.length > 0) {
+                    likedSongsList.innerHTML = `<h3></h3><ul>${likedSongs.map(song => `<li>${song}</li>`).join('')}</ul>`;
+                } else {
+                    likedSongsList.innerHTML = '<p>No liked songs found</p>';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching liked songs:', error);
+            });
+    }
+
+    // Call the function to display liked songs on page load
+    displayLikedSongs();
             </script>
 
 
