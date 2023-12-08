@@ -202,7 +202,7 @@
             <img src="{{ asset('image/homepage/like.jpg') }}" alt="Default Profile Image"
                 style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover;">
             <div class="title1">
-                <a href="#"><b>View Likes</b></a>
+                <a href="user/viewLike"><b>View Likes</b></a>
             </div>
         </div>
 

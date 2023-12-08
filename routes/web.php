@@ -36,9 +36,14 @@ Route::middleware([
         return view('user/membersList');
     })->name('user/membersList');
 
+    Route::get('/user/viewLike', function () {
+        return view('user/viewLike');
+    })->name('user/viewLike');
+
     Route::get('/admin/admin-musicList', function () {
         return view('admin/admin-musicList');
     })->name('admin/admin-musicList');
+    
 
     //for Users
     Route::get('/home', [HomeController::class, 'index'])->name('home');

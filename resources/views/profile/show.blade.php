@@ -84,43 +84,34 @@
                 </div>
             </div>
             <br>
-            <p>Favorite Film</p>
-            <hr>
-            <p>Recent Likes</p>
-            <hr>
+            <p>RECENT LIKES</p>
+            <hr style="border-color: white;">
         <ul id="likedSongsList"></ul>
 
 
-            <script type="text/javascript">
-                function update() {
-                    $('#name').val('{{ auth()->user()->name }}');
-                    $('#bio').val('{{ auth()->user()->bio }}');
-                    $('#location').val('{{ auth()->user()->location }}');
-                    $('#birthdate').val('{{ auth()->user()->birthdate }}');
-                    $('#set-up-profile').modal('show');
-                }
+        <script type="text/javascript">
+            function displayLikedSongs() {
+                fetch('/get-liked-songs')
+                    .then(response => response.json())
+                    .then(data => {
+                        const likedSongsList = document.getElementById('likedSongsList');
+                        const likedSongs = data.likedSongs || [];
 
-                function displayLikedSongs() {
-        fetch('/get-liked-songs')
-            .then(response => response.json())
-            .then(data => {
-                const likedSongsList = document.getElementById('likedSongsList');
-                const likedSongs = data.likedSongs || [];
+                        if (likedSongs.length > 0) {
+                            likedSongsList.innerHTML = `<h3></h3><ul>${likedSongs.map(song => `<li style="display: inline-block; margin-right: 10px;"> <img src="{{ asset('image/like/unknown.jpg') }}" alt="Default Profile Image"
+            style="width: 150px; height: 150px; border-radius: 5px 5px 0 0; object-fit: cover;">${song} </li>`).join('')}</ul>`;
+                        } else {
+                            likedSongsList.innerHTML = '<p>No liked songs found</p>';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching liked songs:', error);
+                    });
+            }
 
-                if (likedSongs.length > 0) {
-                    likedSongsList.innerHTML = `<h3></h3><ul>${likedSongs.map(song => `<li>${song}</li>`).join('')}</ul>`;
-                } else {
-                    likedSongsList.innerHTML = '<p>No liked songs found</p>';
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching liked songs:', error);
-            });
-    }
-
-    // Call the function to display liked songs on page load
-    displayLikedSongs();
-            </script>
+            // Call the function to display liked songs on page load
+            displayLikedSongs();
+        </script>
 
 
     </x-slot>

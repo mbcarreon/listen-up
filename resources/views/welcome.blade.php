@@ -830,38 +830,316 @@
         }
     </style>
     <style>
-        body {
-            background-image: url('image/bannernew.png');
+        body {}
+
+        .banner {
+            background-image: url('image/banner3.png');
             /* Adjust the path based on your folder structure */
             background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .discover {
+            margin-top: -700px;
+            position: absolute;
+            margin-right: 20rem;
+        }
+
+        .music {
+            margin-top: -700px;
+            position: absolute;
+            margin-right: 10rem;
+        }
+
+        .user {
+            margin-top: -700px;
+            position: absolute;
+            margin-right: 0.5rem;
+        }
+
+        .section {
+            background-color: #010504;
+            /* Set your desired background color */
+            padding: 2rem;
+            /* Adjust padding as needed */
+            border-radius: 0.5rem;
+            display: flex;
+        }
+
+        .card1 {
+            position: relative;
+            display: inline-block;
+            padding-right: 30px;
+            flex: 0 0 auto;
+            /* Do not grow or shrink the card */
+            margin-right: 20px;
+            margin-top: 50px;
+        }
+
+        .card1:hover .overlayer {
+            visibility: visible;
+        }
+
+        .card1:hover .overlayer1 {
+            visibility: visible;
+        }
+
+        .card1 img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .card1 .title1 {
+            position: relative;
+            top: 10%;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .card1 .title1 a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .card1 .title1 b {
+            font-size: 16px;
+            display: block;
+        }
+
+        .card1 .title1 p {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .card1 .overlayer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 88%;
+            height: 73%;
+            visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            transition: visibility 0.3s ease-in-out;
+            border-radius: 5px 3px 0 0;
+        }
+
+        .card1 .overlayer .fa-play-circle {
+            color: #fff;
+            font-size: 73px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card1 .overlayer:hover .fa-play-circle {
+            transform: scale(1.1);
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
 </head>
 
 <body class="antialiased">
+    <div class="banner">
+        <div
+            class="relative sm:flex sm:justify-center sm:items-center min-h-screen selection:bg-red-500 selection:text-white">
+            @if (Route::has('login'))
+            <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
+                @auth
+                <a href="{{ url('/home') }}"
+                    class="ml-4 font-semibold text-white hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Go
+                    to Homepage</a>
+                @else
+                <a href="{{ route('login') }}"
+                    class="font-semibold text-white hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
+                    in</a>
 
-    <div
-        class="relative sm:flex sm:justify-center sm:items-center min-h-screen selection:bg-red-500 selection:text-white">
-        @if (Route::has('login'))
-        <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-            @auth
-            <a href="{{ url('/home') }}"
-                class="ml-4 font-semibold text-white hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Go
-                to Homepage</a>
-            @else
-            <a href="{{ route('login') }}"
-                class="font-semibold text-white hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
-                in</a>
-
-            @if (Route::has('register'))
-            <a href="{{ route('register') }}"
-                class="ml-4 font-semibold text-white hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                @if (Route::has('register'))
+                <a href="{{ route('register') }}"
+                    class="ml-4 font-semibold text-white hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                @endif
+                @endauth
+            </div>
             @endif
-            @endauth
+
+            <div class="discover">
+                <a href="#discover-section"
+                    class="ml-4 font-semibold text-white hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Discover</a>
+            </div>
+            <div class="music">
+                <a href="user/musicList"
+                    class="ml-4 font-semibold text-white hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Music</a>
+            </div>
+            <div class="user">
+                <a href="user/membersList"
+                    class="ml-4 font-semibold text-white hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Users</a>
+            </div>
         </div>
-        @endif
+
+
+        <div class="section" id="discover-section">
+            <div>
+                <p class="text-3xl font-semibold text-white mb-4">Popular</p>
+                <br>
+
+
+                <div class="card1">
+                    <div class="overlayer">
+                        <i class="far fa-play-circle"></i>
+                    </div>
+                    <img src="{{ asset('image/musicList/jk.jpg') }}" alt="Default Profile Image"
+                        style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                    <div class="title1">
+                        <a href="https://www.youtube.com/watch?v=KK3tIclJ140" target="_blank"><b>Buwan</b>
+                            <p>Juan Karlos</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card1">
+                    <div class="overlayer">
+                        <i class="far fa-play-circle"></i>
+                    </div>
+                    <img src="{{ asset('image/musicList/cb.png') }}" alt="Default Profile Image"
+                        style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                    <div class="title1">
+                        <a href="#"><b>Next to you</b>
+                            <p>Chris Brown</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card1">
+                    <div class="overlayer">
+                        <i class="far fa-play-circle"></i>
+                    </div>
+                    <img src="{{ asset('image/musicList/cb.png') }}" alt="Default Profile Image"
+                        style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                    <div class="title1">
+                        <a href="#"><b>Next to you</b>
+                            <p>Chris Brown</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card1">
+                    <div class="overlayer">
+                        <i class="far fa-play-circle"></i>
+                    </div>
+                    <img src="{{ asset('image/musicList/cb.png') }}" alt="Default Profile Image"
+                        style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                    <div class="title1">
+                        <a href="#"><b>Next to you</b>
+                            <p>Chris Brown</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div>
+
+            <p class="text-3xl font-semibold text-white mb-4">New Release</p>
+            <br>
+
+
+            <div class="card1">
+                <div class="overlayer">
+                    <i class="far fa-play-circle"></i>
+                </div>
+                <img src="{{ asset('image/musicList/jk.jpg') }}" alt="Default Profile Image"
+                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                <div class="title1">
+                    <a href="https://www.youtube.com/watch?v=KK3tIclJ140" target="_blank"><b>Buwan</b>
+                        <p>Juan Karlos</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card1">
+                <div class="overlayer">
+                    <i class="far fa-play-circle"></i>
+                </div>
+                <img src="{{ asset('image/musicList/cb.png') }}" alt="Default Profile Image"
+                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                <div class="title1">
+                    <a href="#"><b>Next to you</b>
+                        <p>Chris Brown</p>
+                    </a>
+                </div>
+            </div>
+            <div class="card1">
+                <div class="overlayer">
+                    <i class="far fa-play-circle"></i>
+                </div>
+                <img src="{{ asset('image/musicList/cb.png') }}" alt="Default Profile Image"
+                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                <div class="title1">
+                    <a href="#"><b>Next to you</b>
+                        <p>Chris Brown</p>
+                    </a>
+                </div>
+            </div>
+            <div class="card1">
+                <div class="overlayer">
+                    <i class="far fa-play-circle"></i>
+                </div>
+                <img src="{{ asset('image/musicList/cb.png') }}" alt="Default Profile Image"
+                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                <div class="title1">
+                    <a href="#"><b>Next to you</b>
+                        <p>Chris Brown</p>
+                    </a>
+                </div>
+            </div>
+            <div class="card1">
+                <div class="overlayer">
+                    <i class="far fa-play-circle"></i>
+                </div>
+                <img src="{{ asset('image/musicList/cb.png') }}" alt="Default Profile Image"
+                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                <div class="title1">
+                    <a href="#"><b>Next to you</b>
+                        <p>Chris Brown</p>
+                    </a>
+                </div>
+            </div>
+            <div class="card1">
+                <div class="overlayer">
+                    <i class="far fa-play-circle"></i>
+                </div>
+                <img src="{{ asset('image/musicList/cb.png') }}" alt="Default Profile Image"
+                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                <div class="title1">
+                    <a href="#"><b>Next to you</b>
+                        <p>Chris Brown</p>
+                    </a>
+                </div>
+            </div>
+            </div>
+        </div>
 
     </div>
+
 </body>
+<script>
+    // Add an event listener to the "Discover" link
+    document.querySelector('.discover a').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // Get the target element by its id
+        const targetElement = document.querySelector(this.getAttribute('href'));
+
+        // Scroll to the target el
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+    });
+</script>
 
 </html>
