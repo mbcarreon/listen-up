@@ -23,11 +23,18 @@
                     .then(response => response.json())
                     .then(data => {
                         const likedSongsList = document.getElementById('likedSongsList');
-                        const likedSongs = data.likedSongs || [];
+                        const likedSongs = data.likedSongs || {};
 
-                        if (likedSongs.length > 0) {
-                            likedSongsList.innerHTML = `<h3></h3><ul>${likedSongs.map(song => `<li style="display: inline-block; margin-right: 10px;"> <img src="{{ asset('image/like/unknown.jpg') }}" alt="Default Profile Image"
-            style="width: 150px; height: 150px; border-radius: 5px 5px 0 0; object-fit: cover;">${song} </li>`).join('')}</ul>`;
+                        if (Object.keys(likedSongs).length > 0) {
+                            likedSongsList.innerHTML =
+                                `<h3>Liked Songs</h3>
+                                <ul>
+                                    ${Object.values(likedSongs).map(song => 
+                                        `<li style="display: inline-block; margin-right: 10px;"> 
+                                            <img src="http://coverartarchive.org/release/${song.releaseId}/front" alt="Default Profile Image" style="width: 150px; height: 150px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                                            ${song.title} 
+                                        </li>`).join('')}
+                                </ul>`;
                         } else {
                             likedSongsList.innerHTML = '<p>No liked songs found</p>';
                         }
@@ -40,5 +47,6 @@
             // Call the function to display liked songs on page load
             displayLikedSongs();
         </script>
+
     </x-slot>
 </x-app-layout>

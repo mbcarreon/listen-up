@@ -78,13 +78,13 @@ class MusicBrainzController extends Controller
     }
 
     // Retrieve song data with ID
-    public function getSong($id)
+    public function getSong($id, $inc)
     {
         try {
             $endpoint = 'recording/' . $id;
             $options = [
                 'query' => [
-                    'inc' => 'artist-credits+artists+releases',
+                    'inc' => $inc,
                     'fmt' => 'json',
                 ]];
             $song = $this->fetchData($endpoint, $options);

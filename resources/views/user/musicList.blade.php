@@ -242,7 +242,7 @@
                                 <tr>
                                     <td>${recording.title || "Untitled"}</td>
                                     <td>
-                                        <button onclick="likeSong('${recording.title}')">
+                                        <button onclick="likeSong('${recording.id}')">
                                             <i class="fas fa-heart heart" onclick="toggleHeart(this)"></i>
                                         </button>
                                     </td>
@@ -261,7 +261,7 @@
         });
 }
 
-    function likeSong(songTitle) {
+    function likeSong(songId) {
         // Send an AJAX request to the server
         fetch('/add-to-liked-songs', {
             method: 'POST',
@@ -270,16 +270,16 @@
                 'X-CSRF-TOKEN': @json(csrf_token()), // Include CSRF token if needed
             },
             body: JSON.stringify({
-                songTitle: songTitle,
+                songId: songId,
             }),
         })
-            .then(response => response.json())
-            .then(data => {
-                alert(data.message);
-            })
-            .catch(error => {
-                console.error('Error adding song to liked songs:', error);
-            });
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+        })
+        .catch(error => {
+            console.error('Error adding song to liked songs:', error);
+        });
     }
 
     function toggleHeart(element) {
