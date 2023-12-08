@@ -1,13 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
         <h3> Music lovers, critics and friends — find popular members.</h3>
-        <div class="card">
-            <div class="card-header">
-                Visit other users' profiles
-            </div>
-            <table class="table table-hover">
-                <thead>
-                </thead>
+       
+            <table class="table table-hover" style="background: black;">
                 <tbody>
                     @php
                     $i = 1;
@@ -32,6 +27,5 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
     </x-slot>
 </x-app-layout>

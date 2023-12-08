@@ -21,9 +21,9 @@
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: #00a93a;
+            color:black;
         }
-
 
 
         .card1 {
@@ -54,7 +54,7 @@
         }
 
         .card1 .title1 a {
-            color: #000;
+            color: #fff;
             text-decoration: none;
             font-size: 13px;
         }
@@ -96,7 +96,7 @@
         }
 
         .heart {
-            color: #000; /* Initial color */
+            color: #fff; /* Initial color */
             cursor: pointer;
         }
 
@@ -136,7 +136,7 @@
         <br>
 
         <p>Popular Music</p>
-        <hr>
+        <hr style="border-color: white;">
 
         <div class="card1">
             <div class="overlayer">
@@ -168,8 +168,6 @@
         <div id="songList"></div>
 
     </x-slot>
-
-    <!-- Include JavaScript at the end of the body to ensure DOM elements are available -->
 </x-app-layout>
 
 <script>

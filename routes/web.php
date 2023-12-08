@@ -42,7 +42,7 @@ Route::middleware([
 
     //for Users
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('redirects', 'App\Http\Controllers\HomeController@showAllUsers');
+    Route::get('redirects', 'App\Http\Controllers\HomeController@index');
     Route::get('/users/all', [HomeController::class, 'showAllUsers'])->name('users');
     Route::get('/user/membersList', [HomeController::class, 'showAllUsers'])->name('/user/membersList');
 

@@ -23,7 +23,7 @@
             <!-- Modal -->
             <div class="modal fade" id="set-up-profile" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
+                <div class="modal-content border border-white" style="background-color: black;">
                         <div class="modal-header">
                             <h1 class="modal-title">Set up Profile</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -79,8 +79,6 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary">update</button>
                             </form>
-                        </div>
-                        <div class="modal-footer">
                         </div>
                     </div>
                 </div>
