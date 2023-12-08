@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-black">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -27,7 +27,7 @@
 
                 <!-- Contact Link (Show for all users) -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="/contact">
+                    <x-nav-link href="/contact" >
                         {{ __('Contact') }}
                     </x-nav-link>
                 </div>
@@ -36,28 +36,34 @@
 
                 @auth
                 @if(auth()->user()->role == '0')
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('home')">
-                        {{ __('Home') }}
+                <div class="hidden space-x-12 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('home')" class="text-white">
+                        {{ __('Listen Up') }}
                     </x-nav-link>
                 </div>
             
                 <!-- Music List Link (Show for all users) -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="/user/musicList">
-                        {{ __('Music List') }}
+                <div class="hidden sm:flex" style="margin-left: 20rem;">
+                    <x-nav-link :href="route('home')"  class="text-white">
+                        {{ __('Home') }}
                     </x-nav-link>
                 </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="/user/membersList">
-                        {{ __('Members') }}
+                <div class="hidden sm:flex" style="margin-left: 1rem;">
+                    <x-nav-link href="/user/musicList"  class="text-white">
+                        {{ __('Music') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden sm:flex" style="margin-left: 1rem;">
+                    <x-nav-link href="/user/membersList" class="text-white">
+                        {{ __('Users') }}
                     </x-nav-link>
                 </div>
 
                 <!-- Contact Link (Show for all users) -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="/contact">
+                <div class="hidden sm:flex" style="margin-left: 1rem;">
+                    <x-nav-link href="/contact" class="text-white">
                         {{ __('Contact') }}
                     </x-nav-link>
                 </div>
