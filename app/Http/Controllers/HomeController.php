@@ -86,8 +86,10 @@ class HomeController extends Controller {
       if (!isset($likedSongs[$songId])) {
         // Create a JSON object for the song
         $songObject = [
+            'id' => $songId,
             'releaseId' => $song["releases"][0]["id"],
             'title' => $song["title"],
+            'db' => "MusicBrainz",
         ];
         // Add the song object to the liked songs json
         $likedSongs[$songId] = $songObject;

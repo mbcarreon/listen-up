@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MusicListController;
+use App\Http\Controllers\SongController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,8 @@ Route::middleware([
 
     Route::post('/add-to-liked-songs', 'App\Http\Controllers\HomeController@addToLikedSongs');
     Route::get('/get-liked-songs', 'App\Http\Controllers\HomeController@getLikedSongs');
+    
+    Route::get('/get-song-details/music-brainz/{id}', [SongController::class, 'getSongDetailsFromMusicBrainz']);
 });
 
 //for viewing music list
