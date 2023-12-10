@@ -217,63 +217,88 @@
             </div>
         </div>
 
+        @include('modals.viewSong')
 
+ 
         <p>FEATURED TRACKS</p>
         <hr style="border-color: white;">
-        <div class="card1">
-            <div class="overlayer">
-                <i class="far fa-play-circle"></i>
-            </div>
-            <img src="{{ asset('image/musicList/jk.jpg') }}" alt="Default Profile Image"
-                style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
-            <div class="title1">
-                <a href="https://www.youtube.com/watch?v=KK3tIclJ140" target="_blank"><b>Buwan</b>
-                    <p>Juan Karlos</p>
-                </a>
-            </div>
-        </div>
 
-        <div class="card1">
-            <div class="overlayer">
-                <i class="far fa-play-circle"></i>
-            </div>
-            <img src="{{ asset('image/musicList/cb.png') }}" alt="Default Profile Image"
-                style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
-            <div class="title1">
-                <a href="#"><b>Next to you</b>
-                    <p>Chris Brown</p>
-                </a>
-            </div>
-        </div>
-
-        <div class="card1">
-            <div class="overlayer">
-                <i class="far fa-play-circle"></i>
-            </div>
-            <img src="{{ asset('image/musicList/jk.jpg') }}" alt="Default Profile Image"
-                style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
-            <div class="title1">
-                <a href="#"><b>Buwan</b>
-                    <p>Juan Karlos</p>
-                </a>
-            </div>
-        </div>
-
-        <div class="card1">
-            <div class="overlayer">
-                <i class="far fa-play-circle"></i>
-            </div>
-            <img src="{{ asset('image/musicList/cb.png') }}" alt="Default Profile Image"
-                style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
-            <div class="title1">
-                <a href="#"><b>Next to you</b>
-                    <p>Chris Brown</p>
-                </a>
-            </div>
-        </div>
-        <p>LATEST MUSIC</p>
+        
+        <p>POPULAR</p>
         <hr style="border-color: white;">
-        <p>POPULAR THIS WEEK</p>
+
+        <div class="card1">
+            <a href="#" onclick="showSongModal('0e627f75-4818-40f0-b3c3-a526b0406649'); return false;">
+                <div class="overlayer">
+                    <i class="far fa-play-circle"></i>
+                </div>
+                <img src="{{ asset('image/musicList/buwan.jpg') }}" alt="Default Profile Image"
+                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                <div class="title1">
+                    <b>Buwan</b>
+                    <p>juan carlos</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="card1">
+            <a href="#" onclick="showSongModal('4ab59ccd-6afa-4dd4-9430-28c76342be9d'); return false;">
+                <div class="overlayer">
+                    <i class="far fa-play-circle"></i>
+                </div>
+                <img src="{{ asset('image/musicList/next-to-you.jpg') }}" alt="Default Profile Image"
+                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                <div class="title1">
+                    <b>Next to you</b>
+                    <p>Chris Brown</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="card1">
+            <a href="#" onclick="showSongModal('c9319bbc-8dec-4c7c-8934-ee234345f705'); return false;">
+                <div class="overlayer">
+                    <i class="far fa-play-circle"></i>
+                </div>
+                <img src="{{ asset('image/musicList/i-like-me-better.jpg') }}" alt="Default Profile Image"
+                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                <div class="title1">
+                    <b>I Like Me Better</b>
+                    <p>Lauv</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="card1">
+            <a href="#" onclick="showSongModal('e139bd8d-410c-41c1-967c-a30ee3b444e8'); return false;">
+                <div class="overlayer">
+                    <i class="far fa-play-circle"></i>
+                </div>
+                <img src="{{ asset('image/musicList/butter.jpg') }}" alt="Default Profile Image"
+                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                <div class="title1">
+                    <b>Butter</b>
+                    <p>BTS</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="card1">
+            <a href="#" onclick="showSongModal('19b6d048-f981-40e9-8235-a5acf969e5df'); return false;">
+                <div class="overlayer">
+                    <i class="far fa-play-circle"></i>
+                </div>
+                <img src="{{ asset('image/musicList/attention.jpg') }}" alt="Default Profile Image"
+                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                <div class="title1">
+                    <b>Attention</b>
+                    <p>Charlie Puth</p>
+                </div>
+            </a>
+        </div>
+        
+
+        <p>NEW RELEASES</p>
         <hr style="border-color: white;">
         <br>
         <br>
