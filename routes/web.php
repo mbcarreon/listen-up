@@ -41,6 +41,10 @@ Route::middleware([
         return view('user/viewLike');
     })->name('user/viewLike');
 
+    Route::get('/user/viewRating', function () {
+        return view('user/viewRating');
+    })->name('user/viewRating');
+
     Route::get('/admin/admin-musicList', function () {
         return view('admin/admin-musicList');
     })->name('admin/admin-musicList');
@@ -57,7 +61,9 @@ Route::middleware([
 
     
     Route::post('/like-song', [SongController::class, 'likeSong']);
+    Route::post('/rate-song', [SongController::class, 'rateSong']);
     Route::get('/get-liked-songs', [SongController::class, 'getLikedSongs']);
+    Route::get('/get-rated-songs', [SongController::class, 'getRatedSongs']);
     Route::get('/get-song-details/music-brainz/{id}', [SongController::class, 'getSongDetailsFromMusicBrainz']);
 });
 

@@ -213,7 +213,7 @@
             <img src="{{ asset('image/homepage/submit.jpg') }}" alt="Default Profile Image"
                 style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover;">
             <div class="title1">
-                <a href="#"><b>View Rated Tracks</b></a>
+                <a href="user/viewRating"><b>View Rated Tracks</b></a>
             </div>
         </div>
 

@@ -80,4 +80,40 @@ class SongController extends Controller
 
         return response()->json(['likedSongs' => $likedSongs]);
     }
+
+    public function rateSong(Request $request) {
+        $user = Auth::user();
+        $ratedSongs = $user->rated_songs ?? [];
+
+        // Get the song id from the request
+        $songId = $request->input('songId');
+        $rating = $request->input('rating');
+
+        // Retrieves song metadata from MusicBrainz
+        $song = $this->musicBrainzController->getSong($songId, "releases");
+        
+        // Song is not liked, so add it
+        // Create a JSON object for the song
+        $songObject = [
+            'id' => $songId,
+            'rating' => $rating,
+            'releaseId' => $song["releases"][0]["id"],
+            'title' => $song["title"],
+            'db' => "MusicBrainz",
+        ];
+        // Add the song object to the liked songs json
+        $ratedSongs[$songId] = $songObject;
+
+        // Update the user's record in the database
+        $user->update(['rated_songs' => $ratedSongs]);
+        $starMessage = ($rating == 1) ? "1 star." : $rating . " stars.";
+        return response()->json(['message' => 'Song successfully rated ' . $starMessage]);
+    }
+
+    public function getRatedSongs() {
+        $user = Auth::user();
+        $ratedSongs = $user->rated_songs ?? [];
+
+        return response()->json(['ratedSongs' => $ratedSongs]);
+    }
 }
