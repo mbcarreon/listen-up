@@ -36,7 +36,7 @@
                         <i class="fas fa-heart heart${song.hasLikedSong ? ' clicked' : ''}" onclick="toggleHeart(this)"></i>
                     </button>
                     <button onclick="reportSong(${song.id})" style="color: black;">!</button>
-                    <button onclick="addToPlaylist(${song.id})" style="color: black;">+</button>
+                    <button onclick="addToPlaylist('${song.id}')" style="color: black;">+</button>
                 `;
                 // Show the modal
                 $('#songModal').modal('show');
@@ -80,5 +80,22 @@
     function addToPlaylist(songId) {
         // Implement add to playlist functionality
         console.log(`Added song with ID ${songId} to playlist`);
+        fetch('/add-to-playlist', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': @json(csrf_token()), // Include CSRF token if needed
+            },
+            body: JSON.stringify({
+                songId: songId,
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+        })
+        .catch(error => {
+            console.error('Error adding song to playlist:', error);
+        });
     }
 </script>

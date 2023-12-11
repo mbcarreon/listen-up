@@ -33,6 +33,7 @@ class User extends Authenticatable
         'profile_image',
         'liked_songs',
         'rated_songs',
+        'playlist',
     ];
 
     /**
@@ -56,6 +57,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'liked_songs' => 'array',
         'rated_songs' => 'array',
+        'playlist' => 'array',
     ];
 
     /**

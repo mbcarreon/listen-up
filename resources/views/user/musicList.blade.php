@@ -302,6 +302,9 @@
                                                 <button onclick="showRateModal('${recording.id}', this)">
                                                     <i class="${ratedSongs[recording.id] ? 'fas' : 'far'} fa-star"></i>
                                                 </button>
+                                                <button onclick="addToPlaylist('${recording.id}')">
+                                                    +
+                                                </button>
                                             </td>
                                         </tr>
                                     `).join('')}
@@ -349,6 +352,28 @@
 
     function toggleHeart(element) {
         element.classList.toggle('clicked');
+    }
+
+    function addToPlaylist(songId) {
+        // Implement add to playlist functionality
+        console.log(`Added song with ID ${songId} to playlist`);
+        fetch('/add-to-playlist', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': @json(csrf_token()), // Include CSRF token if needed
+            },
+            body: JSON.stringify({
+                songId: songId,
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+        })
+        .catch(error => {
+            console.error('Error adding song to playlist:', error);
+        });
     }
 </script>
 

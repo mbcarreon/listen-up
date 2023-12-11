@@ -191,7 +191,7 @@
             <img src="{{ asset('image/homepage/playlist.jpg') }}" alt="Default Profile Image"
                 style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover;">
             <div class="title1">
-                <a href="#"><b>View Playlist</b></a>
+                <a href="user/viewPlaylist"><b>View Playlist</b></a>
             </div>
         </div>
 

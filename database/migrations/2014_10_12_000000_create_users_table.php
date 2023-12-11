@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('profile_image')->nullable();
             $table->json('liked_songs')->nullable();
             $table->json('rated_songs')->nullable();
+            $table->json('playlist')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

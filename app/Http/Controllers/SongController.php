@@ -74,13 +74,6 @@ class SongController extends Controller
         }
     }
 
-    public function getLikedSongs() {
-        $user = Auth::user();
-        $likedSongs = $user->liked_songs ?? [];
-
-        return response()->json(['likedSongs' => $likedSongs]);
-    }
-
     public function rateSong(Request $request) {
         $user = Auth::user();
         $ratedSongs = $user->rated_songs ?? [];
@@ -110,10 +103,54 @@ class SongController extends Controller
         return response()->json(['message' => 'Song successfully rated ' . $starMessage]);
     }
 
+    public function addToPlaylist(Request $request) {
+        $user = Auth::user();
+        $playlist = $user->playlist ?? [];
+
+        // Get the song id from the request
+        $songId = $request->input('songId');
+
+        // Retrieves song metadata from MusicBrainz
+        $song = $this->musicBrainzController->getSong($songId, "releases");
+        
+        if (!isset($playlist[$songId])) {
+            // Song is not liked, so add it
+            // Create a JSON object for the song
+            $songObject = [
+                'id' => $songId,
+                'releaseId' => $song["releases"][0]["id"],
+                'title' => $song["title"],
+                'db' => "MusicBrainz",
+            ];
+            // Add the song object to the liked songs json
+            $playlist[$songId] = $songObject;
+
+            // Update the user's record in the database
+            $user->update(['playlist' => $playlist]);
+            return response()->json(['message' => 'Song added to playlist.']);
+        } else {
+            return response()->json(['message' => 'Song is already in your playlist']);
+        }
+    }
+
+    public function getLikedSongs() {
+        $user = Auth::user();
+        $likedSongs = $user->liked_songs ?? [];
+
+        return response()->json(['likedSongs' => $likedSongs]);
+    }
+
     public function getRatedSongs() {
         $user = Auth::user();
         $ratedSongs = $user->rated_songs ?? [];
 
         return response()->json(['ratedSongs' => $ratedSongs]);
+    }
+
+    public function getPlaylist() {
+        $user = Auth::user();
+        $playlist = $user->playlist ?? [];
+
+        return response()->json(['playlist' => $playlist]);
     }
 }
