@@ -55,9 +55,9 @@ Route::middleware([
     Route::post('/user/update-profile', [HomeController::class, 'updateProfile'])->name('user.update-profile');
     Route::get('/user/{id}', [HomeController::class, 'show'])->name('user.show');
 
-    Route::post('/add-to-liked-songs', 'App\Http\Controllers\HomeController@addToLikedSongs');
-    Route::get('/get-liked-songs', 'App\Http\Controllers\HomeController@getLikedSongs');
     
+    Route::post('/like-song', [SongController::class, 'likeSong']);
+    Route::get('/get-liked-songs', [SongController::class, 'getLikedSongs']);
     Route::get('/get-song-details/music-brainz/{id}', [SongController::class, 'getSongDetailsFromMusicBrainz']);
 });
 

@@ -264,52 +264,59 @@
 
     // This function is called when an artist is clicked to show songs
     function showSongs(artistId) {
-    const apiUrl = `https://musicbrainz.org/ws/2/recording/?query=arid:${artistId}&fmt=json`;
-
-    fetch(apiUrl)
+        fetch('/get-liked-songs')
         .then(response => response.json())
         .then(data => {
-            // Display songs directly from recordings
-            const songListContainer = document.getElementById('songList');
-            const recordings = data.recordings || [];
-            
-            if (recordings.length > 0) {
-                const songsTable = `
-                    <h3>List of Songs:</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Song Name</th>
-                                <th>Like</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${recordings.map(recording => `
+            const likedSongs = data.likedSongs || [];
+            const apiUrl = `https://musicbrainz.org/ws/2/recording/?query=arid:${artistId}&fmt=json`;
+            fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                // Display songs directly from recordings
+                const songListContainer = document.getElementById('songList');
+                const recordings = data.recordings || [];
+                
+                if (recordings.length > 0) {
+                    const songsTable = `
+                        <h3>List of Songs:</h3>
+                        <table>
+                            <thead>
                                 <tr>
-                                    <td>${recording.title || "Untitled"}</td>
-                                    <td>
-                                        <button onclick="likeSong('${recording.id}')">
-                                            <i class="fas fa-heart heart" onclick="toggleHeart(this)"></i>
-                                        </button>
-                                    </td>
+                                    <th>Song Name</th>
+                                    <th>Like</th>
                                 </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
-                `;
-                songListContainer.innerHTML = songsTable;
-            } else {
-                songListContainer.innerHTML = '<p>No songs found for this artist</p>';
-            }
+                            </thead>
+                            <tbody>
+                                ${recordings.map(recording => `
+                                    <tr>
+                                        <td>${recording.title || "Untitled"}</td>
+                                        <td>
+                                            <button onclick="likeSong('${recording.id}')">
+                                                <i class="fas fa-heart heart${likedSongs[recording.id] ? ' clicked' : ''}" onclick="toggleHeart(this)"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    `;
+                    songListContainer.innerHTML = songsTable;
+                } else {
+                    songListContainer.innerHTML = '<p>No songs found for this artist</p>';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching data from MusicBrainz API:', error);
+            });
         })
         .catch(error => {
-            console.error('Error fetching data from MusicBrainz API:', error);
+            console.error('Error fetching liked songs:', error);
         });
-}
+    }
 
     function likeSong(songId) {
         // Send an AJAX request to the server
-        fetch('/add-to-liked-songs', {
+        fetch('/like-song', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -329,8 +336,8 @@
     }
 
     function toggleHeart(element) {
-            element.classList.toggle('clicked');
-        }
+        element.classList.toggle('clicked');
+    }
 </script>
 
 </html>

@@ -72,39 +72,4 @@ class HomeController extends Controller {
       return view('user.viewProfile', compact('user'));
    }
 
-   public function addToLikedSongs(Request $request) {
-      $user = Auth::user();
-      $likedSongs = $user->liked_songs ?? [];
-
-      // Get the song id from the request
-      $songId = $request->input('songId');
-
-      // Retrieves song metadata from MusicBrainz
-      $song = $this->musicBrainzController->getSong($songId, "releases");
-      
-      // Add the song to the liked songs json if it's not already there
-      if (!isset($likedSongs[$songId])) {
-        // Create a JSON object for the song
-        $songObject = [
-            'id' => $songId,
-            'releaseId' => $song["releases"][0]["id"],
-            'title' => $song["title"],
-            'db' => "MusicBrainz",
-        ];
-        // Add the song object to the liked songs json
-        $likedSongs[$songId] = $songObject;
-
-        // Update the user's record in the database
-        $user->update(['liked_songs' => $likedSongs]);
-      }
-      
-      return response()->json(['message' => 'Song added to liked songs.']);
-   }
-
-   public function getLikedSongs() {
-      $user = Auth::user();
-      $likedSongs = $user->liked_songs ?? [];
-
-      return response()->json(['likedSongs' => $likedSongs]);
-   }
 }

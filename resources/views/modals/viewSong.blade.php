@@ -26,12 +26,15 @@
                 const modalBody = document.getElementById('songModalBody');
                 // Populate the modal with song details
                 //  Nag add ako ng "style="color: black;" since white yung text pag wala siya
+                //  Also, invisible yung like button
                 modalBody.innerHTML = `
                     <img src="${song.cover}" alt="Cover Image" style="width: 100%; height: auto;">
                     <h2 style="color: black;">${song.title}</h2>
                     <p style="color: black;">Artist: ${song.artist}</p>
                     <a href="${song.song_link}" target="_blank">Play</a>
-                    <button onclick="likeSong(${song.id})" style="color: black;">Like</button>
+                    <button onclick="likeSong('${song.id}')">
+                        <i class="fas fa-heart heart${song.hasLikedSong ? ' clicked' : ''}" onclick="toggleHeart(this)"></i>
+                    </button>
                     <button onclick="reportSong(${song.id})" style="color: black;">!</button>
                     <button onclick="addToPlaylist(${song.id})" style="color: black;">+</button>
                 `;
@@ -46,6 +49,27 @@
     function likeSong(songId) {
         // Implement like functionality
         console.log(`Liked song with ID: ${songId}`);
+        fetch('/like-song', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': @json(csrf_token()), // Include CSRF token if needed
+            },
+            body: JSON.stringify({
+                songId: songId,
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+        })
+        .catch(error => {
+            console.error('Error adding song to liked songs:', error);
+        });
+    }
+
+    function toggleHeart(element) {
+        element.classList.toggle('clicked');
     }
 
     function reportSong(songId) {
