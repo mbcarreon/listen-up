@@ -7,6 +7,7 @@ use App\Http\Controllers\MusicBrainzController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Validation\Rule;
 
 class HomeController extends Controller {
     private $musicBrainzController;
@@ -36,12 +37,14 @@ class HomeController extends Controller {
       $user = Auth::user();
       
       $request->validate([
-          'name' => 'nullable|string|max:255',
-          'bio' => 'nullable|string|max:255',
-          'location' => 'nullable|string|max:255',
-          'birthdate' => 'nullable|date',
-          'profile_image' => 'nullable|mimes:jpg,jpeg,png', 
-      ]);
+         'name' => 'required|unique:users,name,' . $user->id . '|max:255',
+         'bio' => 'nullable|string|max:255',
+         'location' => 'nullable|string|max:255',
+         'birthdate' => 'nullable|date',
+         'profile_image' => 'nullable|mimes:jpg,jpeg,png',
+     ], [
+         'name.unique' => 'The entered name is already in use. Please choose a different name.',
+     ]);
   
       if ($request->hasFile('profile_image')) {
          $profile_image = $request->file('profile_image');
