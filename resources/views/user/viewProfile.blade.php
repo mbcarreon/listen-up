@@ -11,11 +11,5 @@
         <p>Location: {{ $user->location }}</p>
         <p>Birthdate: {{ $user->birthdate }}</p>
 
-        <h5>List of {{ $user->name }}'s Favorite Songs: </h5>
-        <p>Song 1</p>
-        <p>Song 2</p>
-        <p>Song 3</p>
-        <p>Song 4</p>
-        <p>Song 5</p>
     </x-slot>
 </x-app-layout>
