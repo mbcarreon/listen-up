@@ -82,7 +82,7 @@
             text-align: center;
             background: rgba(0, 0, 0, 0.6);
             transition: visibility 0.3s ease-in-out;
-            border-radius: 50%;
+            border-radius: 5px 5px 0 0;
         }
 
         .card1 .overlayer .fa-play-circle {
