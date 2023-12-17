@@ -124,12 +124,16 @@
         .card1 .overlayer1:hover .fa-play-circle {
             transform: scale(1.1);
         }
+        .modal-content .form-group {
+            color: #000;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 
 <x-app-layout>
     <x-slot name="header">
+        @include('modals.submitTrack')
         <p>
             @if (auth()->user()->profile_image)
             <img src="{{ asset(auth()->user()->profile_image) }}" alt="Profile Image"
@@ -179,10 +183,12 @@
             </div>
             <img src="{{ asset('image/homepage/submit.jpg') }}" alt="Default Profile Image"
                 style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover;">
-            <div class="title1">
-                <a href="#"><b>Submit Tracks</b></a>
-            </div>
+            <button type="button" class="title1" data-toggle="modal" data-target="#addTrackModal">
+                <b>Submit Tracks</b>
+            </button>
         </div>
+
+
 
         <div class="card1">
             <div class="overlayer1">

@@ -7,6 +7,7 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MusicListController;
 use App\Http\Controllers\SongController;
+use App\Http\Controllers\TrackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +72,8 @@ Route::middleware([
     Route::get('/get-rated-songs', [SongController::class, 'getRatedSongs']);
     Route::get('/get-playlist', [SongController::class, 'getPlaylist']);
     Route::get('/get-song-details/music-brainz/{id}', [SongController::class, 'getSongDetailsFromMusicBrainz']);
+
+    Route::post('/tracks', [TrackController::class, 'store'])->name('tracks.store');
 });
 
 //for viewing music list
