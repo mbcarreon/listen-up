@@ -226,7 +226,7 @@
         @include('modals.viewSong')
 
  
-        <p>FEATURED TRACKS</p>
+        <p>SUBMITTED TRACKS</p>
         <hr style="border-color: white;">
 
         

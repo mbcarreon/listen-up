@@ -18,7 +18,7 @@
                     </x-nav-link>
                 </div>
 
-                <div class="hidden sm:flex" style="margin-left: 20rem;">
+                <div class="hidden sm:flex" style="margin-left: 25rem;">
                     <x-nav-link :href="route('home')"  class="text-white">
                         {{ __('Home') }}
                     </x-nav-link>
@@ -36,13 +36,6 @@
                         {{ __('Users') }}
                     </x-nav-link>
                 </div>
-
-                <!-- Contact Link (Show for all users) -->
-                <div class="hidden sm:flex" style="margin-left: 1rem;">
-                    <x-nav-link href="/contact" class="text-white">
-                        {{ __('Contact') }}
-                    </x-nav-link>
-                </div>
                 @endif
                 @endauth
 
@@ -55,7 +48,7 @@
                 </div>
             
                 <!-- Music List Link (Show for all users) -->
-                <div class="hidden sm:flex" style="margin-left: 20rem;">
+                <div class="hidden sm:flex" style="margin-left: 25rem;">
                     <x-nav-link :href="route('home')"  class="text-white">
                         {{ __('Home') }}
                     </x-nav-link>
@@ -73,12 +66,6 @@
                     </x-nav-link>
                 </div>
 
-                <!-- Contact Link (Show for all users) -->
-                <div class="hidden sm:flex" style="margin-left: 1rem;">
-                    <x-nav-link href="/contact" class="text-white">
-                        {{ __('Contact') }}
-                    </x-nav-link>
-                </div>
                 @endif
                 @endauth
             </div>

@@ -1,11 +1,17 @@
 <head>
     <link href='https://fonts.googleapis.com/css?family=MuseoModerno' rel='stylesheet'>
     <style>
-        .titleName h1 {
+        .titleName h1{
             font-family: 'MuseoModerno';
             margin-top: -140px;
             margin-left: 250px;
             font-size: 70px;
+        }
+        .subName h6 {
+            font-family: 'MuseoModerno';
+            margin-top: 5px;
+            margin-left: 258px;
+            font-size: 20px;
         }
 
         table {
@@ -133,7 +139,6 @@
 
 <x-app-layout>
     <x-slot name="header">
-        @include('modals.submitTrack')
         <p>
             @if (auth()->user()->profile_image)
             <img src="{{ asset(auth()->user()->profile_image) }}" alt="Profile Image"
@@ -146,6 +151,9 @@
         </p>
         <div class="titleName">
             <h1>Welcome, {{ auth()->user()->name }}</h1>
+        </div>
+        <div class="subName">
+            <h6>admin</h6>
         </div>
         <br>
         <br>
@@ -177,56 +185,11 @@
             </div>
         </div>
 
-        <div class="card1">
-            <div class="overlayer1">
-                <i class="far fa-play-circle"></i>
-            </div>
-            <img src="{{ asset('image/homepage/submit.jpg') }}" alt="Default Profile Image"
-                style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover;">
-            <button type="button" class="title1" data-toggle="modal" data-target="#addTrackModal">
-                <b>Submit Tracks</b>
-            </button>
-        </div>
-
-
-
-        <div class="card1">
-            <div class="overlayer1">
-                <i class="far fa-play-circle"></i>
-            </div>
-            <img src="{{ asset('image/homepage/playlist.jpg') }}" alt="Default Profile Image"
-                style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover;">
-            <div class="title1">
-                <a href="user/viewPlaylist"><b>View Playlist</b></a>
-            </div>
-        </div>
-
-        <div class="card1">
-            <div class="overlayer1">
-                <i class="far fa-play-circle"></i>
-            </div>
-            <img src="{{ asset('image/homepage/like.jpg') }}" alt="Default Profile Image"
-                style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover;">
-            <div class="title1">
-                <a href="user/viewLike"><b>View Likes</b></a>
-            </div>
-        </div>
-
-        <div class="card1">
-            <div class="overlayer1">
-                <i class="far fa-play-circle"></i>
-            </div>
-            <img src="{{ asset('image/homepage/submit.jpg') }}" alt="Default Profile Image"
-                style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover;">
-            <div class="title1">
-                <a href="user/viewRating"><b>View Rated Tracks</b></a>
-            </div>
-        </div>
 
         @include('modals.viewSong')
 
  
-        <p>FEATURED TRACKS</p>
+        <p>SUBMITTED TRACKS</p>
         <hr style="border-color: white;">
 
         
