@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
+            {{ __('Playlist') }}
         </h2>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
         @if(auth()->user()->profile_image)
@@ -14,9 +14,35 @@
         @endif
 
         <br>
-        <p>PLAYLIST</p>
+        <a onClick="update()" href="javascript:void(0)" class="btn btn-info">Edit Playlist Name</a>
         <hr style="border-color: white;">
         <ul id="playlistList" style="white-space: nowrap; overflow-x: auto;"></ul>
+        <div class="modal fade" id="playlist_name" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                <div class="modal-content border border-white" style="background-color: black;">
+                        <div class="modal-header">
+                            <h1 class="modal-title">Edit Playlist Name</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ route('user.update-playlist_name') }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <div class="row mb-3">
+                                    <label for="playlist_name" class="col-sm-2 col-form-label">Playlist Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="playlist_name" name="playlist_name" required>
+                                        @error('playlist_name')
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">update</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         @include('modals.viewSong')
 
@@ -30,7 +56,7 @@
 
                         if (Object.keys(playlist).length > 0) {
                             playlistList.innerHTML =
-                                `<h3>Playlist</h3>
+                                `<h3>Playlist Name: {{ auth()->user()->playlist_name }} </h3>
                                 <ul>
                                     ${Object.values(playlist).map(song => 
                                         `<a href="#" onclick="showSongModal('${song.id}'); return false;">
@@ -51,7 +77,17 @@
 
             // Call the function to display liked songs on page load
             displayPlaylist();
+
+            function update() {
+                    $('#playlist_name').val('{{ auth()->user()->playlist_name}}');
+                    $('#playlist_name').modal('show');
+                }
+
+            // Call the function to display liked songs on page load
+            displayLikedSongs();
         </script>
+
+        
 
     </x-slot>
 </x-app-layout>

@@ -72,6 +72,23 @@ class HomeController extends Controller {
       return redirect()->back();
    }
 
+   public function updatePlaylistName(Request $request) {
+      $user = Auth::user();
+      
+      $request->validate([
+         'playlist_name' => 'nullable|string|max:255',
+     ]);
+  
+  
+      $user->update([
+         'playlist_name' => $request->input('playlist_name'),
+      ]);
+  
+      $request->session()->flash('success', 'Playlist Name updated successfully');
+
+      return redirect()->back();
+   }
+
    public function show($id) {
       $user = User::findOrFail($id);
       return view('user.viewProfile', compact('user'));
