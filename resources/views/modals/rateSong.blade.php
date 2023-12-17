@@ -19,7 +19,7 @@
     let userRating = 0;
     let btnElement;
 
-    function showRateModal(songId, element) {
+    function showRateModal(songId, rating, element) {
         if(element) {
             btnElement = element;
         }
@@ -45,11 +45,11 @@
                     <div>
                         <p style="color: black;">Rate the song:</p>
                         <div id="ratingStars">
-                            <span class="star" onclick="rateSong(1)" style="color: black;">&#9733;</span>
-                            <span class="star" onclick="rateSong(2)" style="color: black;">&#9733;</span>
-                            <span class="star" onclick="rateSong(3)" style="color: black;">&#9733;</span>
-                            <span class="star" onclick="rateSong(4)" style="color: black;">&#9733;</span>
-                            <span class="star" onclick="rateSong(5)" style="color: black;">&#9733;</span>
+                            <span class="star" onclick="rateSong(1)" style="color: ${rating >= 1 ? "gold" : "black"};">&#9733;</span>
+                            <span class="star" onclick="rateSong(2)" style="color: ${rating >= 2 ? "gold" : "black"};">&#9733;</span>
+                            <span class="star" onclick="rateSong(3)" style="color: ${rating >= 3 ? "gold" : "black"};">&#9733;</span>
+                            <span class="star" onclick="rateSong(4)" style="color: ${rating >= 4 ? "gold" : "black"};">&#9733;</span>
+                            <span class="star" onclick="rateSong(5)" style="color: ${rating >= 5 ? "gold" : "black"};">&#9733;</span>
                         </div>
                     </div>
                     <button onclick="submitRating('${songId}')" style="color: black;">Submit</button>

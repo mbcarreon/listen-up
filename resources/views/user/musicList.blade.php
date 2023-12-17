@@ -96,12 +96,11 @@
         }
 
         .heart {
-            color: #fff; /* Initial color */
+            color: #ff0000; /* Initial color */
             cursor: pointer;
         }
-
-        .heart.clicked {
-            color: #ff0000; /* Color when clicked */
+        .fa-star {
+            color: #FFFF00; /* Initial color */
         }
     </style>
 
@@ -296,10 +295,10 @@
                                         <tr>
                                             <td>${recording.title || "Untitled"}</td>
                                             <td>
-                                                <button onclick="likeSong('${recording.id}')">
-                                                    <i class="fas fa-heart heart${likedSongs[recording.id] ? ' clicked' : ''}" onclick="toggleHeart(this)"></i>
+                                                <button onclick="likeSong('${recording.id}', this)">
+                                                    <i class="${likedSongs[recording.id] ? ' fas' : 'far'} fa-heart heart"></i>
                                                 </button>
-                                                <button onclick="showRateModal('${recording.id}', this)">
+                                                <button onclick="showRateModal('${recording.id}', ${ratedSongs[recording.id] ? ratedSongs[recording.id]["rating"] : 0}, this)">
                                                     <i class="${ratedSongs[recording.id] ? 'fas' : 'far'} fa-star"></i>
                                                 </button>
                                                 <button onclick="addToPlaylist('${recording.id}')">
@@ -329,7 +328,7 @@
         });
     }
 
-    function likeSong(songId) {
+    function likeSong(songId, buttonElement) {
         // Send an AJAX request to the server
         fetch('/like-song', {
             method: 'POST',
@@ -343,15 +342,20 @@
         })
         .then(response => response.json())
         .then(data => {
+            const heartIcon = buttonElement.querySelector('.far.fa-heart') 
+                || buttonElement.querySelector('.fas.fa-heart') ;
+            if (heartIcon) {
+                console.log("HeartIcon found");
+                heartIcon.classList.toggle('fas');
+                heartIcon.classList.toggle('far');
+            } else {
+                console.log("HeartIcon not found");
+            }
             alert(data.message);
         })
         .catch(error => {
             console.error('Error adding song to liked songs:', error);
         });
-    }
-
-    function toggleHeart(element) {
-        element.classList.toggle('clicked');
     }
 
     function addToPlaylist(songId) {

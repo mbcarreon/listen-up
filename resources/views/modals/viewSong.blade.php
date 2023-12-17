@@ -1,3 +1,13 @@
+
+<head>
+    <style>
+    .heart {
+        color: #ff0000; 
+        cursor: pointer;
+    }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
 <div class="modal fade" id="songModal" tabindex="-1" role="dialog" aria-labelledby="songModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -33,8 +43,8 @@
                         <h2 style="color: black;">${song.title}</h2>
                         <p style="color: black;">Artist: ${song.artist}</p>
                         <a href="${song.song_link}" target="_blank">Play</a>
-                        <button onclick="likeSong('${song.id}')">
-                            <i class="fas fa-heart heart${song.hasLikedSong ? ' clicked' : ''}" onclick="toggleHeart(this)"></i>
+                        <button onclick="likeSong('${song.id}', this)">
+                            <i class="${song.hasLikedSong ? ' fas' : 'far'} fa-heart heart"></i>
                         </button>
                         <button onclick="reportTrack('${song.id}')" style="color: black;">!</button>
                         <button onclick="addToPlaylist('${song.id}')" style="color: black;">+</button>
@@ -59,9 +69,8 @@
                     <img src="${song.cover}" alt="Cover Image" style="width: 100%; height: auto;">
                     <h2 style="color: black;">${song.title}</h2>
                     <p style="color: black;">Artist: ${song.artist}</p>
-                    <a href="${song.song_link}" target="_blank">Play</a>
-                    <button onclick="likeSong('${song.id}')">
-                        <i class="fas fa-heart heart${song.hasLikedSong ? ' clicked' : ''}" onclick="toggleHeart(this)"></i>
+                    <button onclick="likeSong('${song.id}', this)">
+                        <i class="${song.hasLikedSong ? ' fas' : 'far'} fa-heart heart"></i>
                     </button>
                     <button onclick="addToPlaylist('${song.id}')" style="color: black;">+</button>
                 `;
@@ -74,7 +83,7 @@
         }
     }
 
-    function likeSong(songId) {
+    function likeSong(songId, buttonElement) {
         // Implement like functionality
         console.log(`Liked song with ID: ${songId}`);
         fetch('/like-song', {
@@ -89,15 +98,22 @@
         })
         .then(response => response.json())
         .then(data => {
+            const heartIcon = buttonElement.querySelector('.far.fa-heart') 
+                || buttonElement.querySelector('.fas.fa-heart') ;
+            if (heartIcon) {
+                console.log("HeartIcon found");
+                heartIcon.classList.toggle('fas');
+                heartIcon.classList.toggle('far');
+            } else {
+                console.log("HeartIcon not found");
+            }
             alert(data.message);
         })
         .catch(error => {
             console.error('Error adding song to liked songs:', error);
         });
     }
-    function toggleHeart(element) {
-        element.classList.toggle('clicked');
-    }
+    
     function reportTrack(songId) {
         // Implement report functionality
         console.log(`Reported track with ID: ${songId}`);
