@@ -119,6 +119,14 @@
                     });
             }
 
+            function update() {
+                    $('#name').val('{{ auth()->user()->name }}');
+                    $('#bio').val('{{ auth()->user()->bio }}');
+                    $('#location').val('{{ auth()->user()->location }}');
+                    $('#birthdate').val('{{ auth()->user()->birthdate }}');
+                    $('#set-up-profile').modal('show');
+                }
+
             // Call the function to display liked songs on page load
             displayLikedSongs();
         </script>
