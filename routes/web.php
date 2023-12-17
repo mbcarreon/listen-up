@@ -87,8 +87,11 @@ Route::middleware([
     Route::get('/tracks/all', [TrackController::class, 'getAllTracks'])->name('tracks.all');
     Route::get('/tracks/homepage', [TrackController::class, 'getHomepageTracks'])->name('tracks.homepage');
     Route::get('/get-song-details/listen-up/{id}', [TrackController::class, 'getSongDetailsFromListenUp']);
-    
+
     Route::post('/report-track', [TrackController::class, 'reportTrack']);
+    Route::post('/delete-track', [TrackController::class, 'deleteTrack']);
+    Route::post('/resolve-track', [TrackController::class, 'resolveTrack']);
+    Route::get('/get-reported-tracks', [TrackController::class, 'getReportedTracks']);
 });
 
 //for viewing music list

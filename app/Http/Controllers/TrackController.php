@@ -62,6 +62,11 @@ class TrackController extends Controller
         return response()->json(['tracks' => $tracks]);
     }
 
+    public function getReportedTracks() {
+        $tracks = Track::where('isReported', true)->get();
+        return response()->json(['tracks' => $tracks]);
+    }
+
     public function getSongDetailsFromListenUp($id)
     {
         $track = Track::find($id);
@@ -70,7 +75,7 @@ class TrackController extends Controller
                 'id' => $track["id"],
                 'cover' => $track["cover"],
                 'album' => $track["album"],
-                'country' => $track["releases"][0]["country"] ?? "N/A",
+                'country' => $track["country"],
                 'title' => $track["title"],
                 'artist' => $track["artist"],
                 'duration' => $track["duration"],
@@ -89,5 +94,24 @@ class TrackController extends Controller
         $track = Track::find($songId);
         $track->update(['isReported' => true]);
         return response()->json(['message' => 'Track has been reported successfully.']);
+    }
+    
+    public function deleteTrack(Request $request) {
+        $songId = $request->input('songId');
+        $track = Track::find($songId);
+
+        if (!$track) {
+            return response()->json(['message' => 'Track not found.']);
+        }
+
+        $track->delete();
+        return response()->json(['message' => 'Track has been deleted successfully.']);
+    }
+
+    public function resolveTrack(Request $request) {
+        $songId = $request->input('songId');
+        $track = Track::find($songId);
+        $track->update(['isReported' => false]);
+        return response()->json(['message' => 'Track has been resolved successfully.']);
     }
 }
