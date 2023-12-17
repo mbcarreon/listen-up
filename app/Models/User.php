@@ -34,6 +34,7 @@ class User extends Authenticatable
         'liked_songs',
         'rated_songs',
         'playlist',
+        'role'
     ];
 
     /**
@@ -68,4 +69,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function isAdmin()
+    {
+        return $this->role == 1;
+    }
 }

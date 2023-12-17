@@ -72,6 +72,12 @@ Route::middleware([
     Route::get('/get-rated-songs', [SongController::class, 'getRatedSongs']);
     Route::get('/get-playlist', [SongController::class, 'getPlaylist']);
     Route::get('/get-song-details/music-brainz/{id}', [SongController::class, 'getSongDetailsFromMusicBrainz']);
+    Route::post('/report-song', [SongController::class, 'reportSong']);
+    Route::get('/get-reported-songs', 'SongController@getReportedSongs');
+    // Add this route to handle the "Make Admin" action in HomeController
+    Route::post('/make-admin/{user}', [HomeController::class, 'makeAdmin'])->name('make-admin');
+
+
 
     Route::post('/tracks', [TrackController::class, 'store'])->name('tracks.store');
 });

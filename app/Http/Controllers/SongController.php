@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\MusicBrainzController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\ReportedSong;
 
 class SongController extends Controller
 {
@@ -74,6 +75,9 @@ class SongController extends Controller
         }
     }
 
+    public function reportSong(Request $request) {
+    //
+    }
     public function rateSong(Request $request) {
         $user = Auth::user();
         $ratedSongs = $user->rated_songs ?? [];
@@ -153,4 +157,9 @@ class SongController extends Controller
 
         return response()->json(['playlist' => $playlist]);
     }
+
+    public function getReportedSongs(Request $request)
+{
+//
+}
 }

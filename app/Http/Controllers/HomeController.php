@@ -77,4 +77,17 @@ class HomeController extends Controller {
       return view('user.viewProfile', compact('user'));
    }
 
+   public function makeAdmin(User $user)
+   {
+       // Check if the authenticated user is an admin
+       if (auth()->user()->isAdmin()) {
+           // Update the user's role to make them an admin
+           $user->update(['role' => 1]);
+   
+           return redirect()->back()->with('success', 'User is now an admin.');
+       }
+   
+       return redirect()->back()->with('error', 'You do not have permission to perform this action.');
+   }
+
 }

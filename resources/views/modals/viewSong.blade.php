@@ -35,7 +35,6 @@
                     <button onclick="likeSong('${song.id}')">
                         <i class="fas fa-heart heart${song.hasLikedSong ? ' clicked' : ''}" onclick="toggleHeart(this)"></i>
                     </button>
-                    <button onclick="reportSong(${song.id})" style="color: black;">!</button>
                     <button onclick="addToPlaylist('${song.id}')" style="color: black;">+</button>
                 `;
                 // Show the modal
@@ -70,11 +69,6 @@
 
     function toggleHeart(element) {
         element.classList.toggle('clicked');
-    }
-
-    function reportSong(songId) {
-        // Implement report functionality
-        console.log(`Reported song with ID: ${songId}`);
     }
 
     function addToPlaylist(songId) {
