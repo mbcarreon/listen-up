@@ -12,22 +12,34 @@
 
                 @auth
                 @if(auth()->user()->role == '1')
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('home')">
+                <div class="hidden space-x-12 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('home')" class="text-white">
+                        {{ __('Listen Up') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden sm:flex" style="margin-left: 20rem;">
+                    <x-nav-link :href="route('home')"  class="text-white">
                         {{ __('Home') }}
                     </x-nav-link>
                 </div>
             
                 <!-- Music List Link (Show for all users) -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="/admin/admin-musicList">
+                 <div class="hidden sm:flex" style="margin-left: 1rem;">
+                    <x-nav-link href="/admin/admin-musicList" class="text-white">
                         {{ __('Music List') }}
                     </x-nav-link>
                 </div>
 
+                <div class="hidden sm:flex" style="margin-left: 1rem;">
+                    <x-nav-link href="/user/membersList" class="text-white">
+                        {{ __('Users') }}
+                    </x-nav-link>
+                </div>
+
                 <!-- Contact Link (Show for all users) -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="/contact" >
+                <div class="hidden sm:flex" style="margin-left: 1rem;">
+                    <x-nav-link href="/contact" class="text-white">
                         {{ __('Contact') }}
                     </x-nav-link>
                 </div>

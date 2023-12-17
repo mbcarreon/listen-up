@@ -51,29 +51,28 @@
                 .then(response => response.json())
                 .then(song => {
 
-                    const modalBody = document.getElementById('songModalBody');
-                    // Populate the modal with song details
-                    //  Nag add ako ng "style="color: black;" since white yung text pag wala siya
-                    //  Also, invisible yung like button
-                    modalBody.innerHTML = `
-                        <img src="${song.cover}" alt="Cover Image" style="width: 100%; height: auto;">
-                        <h2 style="color: black;">${song.title}</h2>
-                        <p style="color: black;">Artist: ${song.artist}</p>
-                        <a href="${song.song_link}" target="_blank">Play</a>
-                        <button onclick="likeSong('${song.id}')">
-                            <i class="fas fa-heart heart${song.hasLikedSong ? ' clicked' : ''}" onclick="toggleHeart(this)"></i>
-                        </button>
-                        <button onclick="reportSong(${song.id})" style="color: black;">!</button>
-                        <button onclick="addToPlaylist('${song.id}')" style="color: black;">+</button>
-                    `;
-                    // Show the modal
-                    $('#songModal').modal('show');
-                })
-                .catch(error => {
-                    console.error('Error fetching song details:', error);
-                });
-        }
+                const modalBody = document.getElementById('songModalBody');
+                // Populate the modal with song details
+                //  Nag add ako ng "style="color: black;" since white yung text pag wala siya
+                //  Also, invisible yung like button
+                modalBody.innerHTML = `
+                    <img src="${song.cover}" alt="Cover Image" style="width: 100%; height: auto;">
+                    <h2 style="color: black;">${song.title}</h2>
+                    <p style="color: black;">Artist: ${song.artist}</p>
+                    <a href="${song.song_link}" target="_blank">Play</a>
+                    <button onclick="likeSong('${song.id}')">
+                        <i class="fas fa-heart heart${song.hasLikedSong ? ' clicked' : ''}" onclick="toggleHeart(this)"></i>
+                    </button>
+                    <button onclick="addToPlaylist('${song.id}')" style="color: black;">+</button>
+                `;
+                // Show the modal
+                $('#songModal').modal('show');
+            })
+            .catch(error => {
+                console.error('Error fetching song details:', error);
+            });
     }
+
     function likeSong(songId) {
         // Implement like functionality
         console.log(`Liked song with ID: ${songId}`);

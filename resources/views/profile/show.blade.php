@@ -35,7 +35,7 @@
                                 <div class="row mb-3">
                                     <label for="name" class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="name" name="name">
+                                        <input type="text" class="form-control" id="name" name="name" required>
                                         @error('name')
                                         <span class="text-danger">{{$message}}</span>
                                         @enderror
@@ -119,9 +119,23 @@
                     });
             }
 
+            function update() {
+                    $('#name').val('{{ auth()->user()->name }}');
+                    $('#bio').val('{{ auth()->user()->bio }}');
+                    $('#location').val('{{ auth()->user()->location }}');
+                    $('#birthdate').val('{{ auth()->user()->birthdate }}');
+                    $('#set-up-profile').modal('show');
+                }
+
             // Call the function to display liked songs on page load
             displayLikedSongs();
         </script>
+
+@if(session('success'))
+    <script>
+        alert("{{ session('success') }}");
+    </script>
+@endif
 
 
     </x-slot>

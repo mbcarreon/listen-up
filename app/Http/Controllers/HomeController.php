@@ -7,6 +7,7 @@ use App\Http\Controllers\MusicBrainzController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Validation\Rule;
 
 class HomeController extends Controller {
     private $musicBrainzController;
@@ -36,12 +37,14 @@ class HomeController extends Controller {
       $user = Auth::user();
       
       $request->validate([
-          'name' => 'nullable|string|max:255',
-          'bio' => 'nullable|string|max:255',
-          'location' => 'nullable|string|max:255',
-          'birthdate' => 'nullable|date',
-          'profile_image' => 'nullable|mimes:jpg,jpeg,png', 
-      ]);
+         'name' => 'required|unique:users,name,' . $user->id . '|max:255',
+         'bio' => 'nullable|string|max:255',
+         'location' => 'nullable|string|max:255',
+         'birthdate' => 'nullable|date',
+         'profile_image' => 'nullable|mimes:jpg,jpeg,png',
+     ], [
+         'name.unique' => 'The entered name is already in use. Please choose a different name.',
+     ]);
   
       if ($request->hasFile('profile_image')) {
          $profile_image = $request->file('profile_image');
@@ -64,12 +67,27 @@ class HomeController extends Controller {
          'birthdate' => $request->input('birthdate'),
       ]);
   
-      return redirect()->back()->with('success', 'Profile updated successfully');
+      $request->session()->flash('success', 'Profile updated successfully');
+
+      return redirect()->back();
    }
 
    public function show($id) {
       $user = User::findOrFail($id);
       return view('user.viewProfile', compact('user'));
+   }
+
+   public function makeAdmin(User $user)
+   {
+       // Check if the authenticated user is an admin
+       if (auth()->user()->isAdmin()) {
+           // Update the user's role to make them an admin
+           $user->update(['role' => 1]);
+   
+           return redirect()->back()->with('success', 'User is now an admin.');
+       }
+   
+       return redirect()->back()->with('error', 'You do not have permission to perform this action.');
    }
 
 }
