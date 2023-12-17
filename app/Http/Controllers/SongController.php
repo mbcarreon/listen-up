@@ -158,8 +158,29 @@ class SongController extends Controller
         return response()->json(['playlist' => $playlist]);
     }
 
+    public function getLikedSongsOfUser($userId) {
+        $user = User::find($userId);
+        $likedSongs = $user->liked_songs ?? [];
+
+        return response()->json(['likedSongs' => $likedSongs]);
+    }
+
+    public function getRatedSongsOfUser($userId) {
+        $user = User::find($userId);
+        $ratedSongs = $user->rated_songs ?? [];
+
+        return response()->json(['ratedSongs' => $ratedSongs]);
+    }
+
+    public function getPlaylistOfUser($userId) {
+        $user = User::find($userId);
+        $playlist = $user->playlist ?? [];
+
+        return response()->json(['playlist' => $playlist]);
+    }
+
     public function getReportedSongs(Request $request)
-{
-//
-}
+    {
+    //
+    }
 }
