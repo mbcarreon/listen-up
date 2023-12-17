@@ -62,6 +62,7 @@ Route::middleware([
     Route::get('/user/membersList', [HomeController::class, 'showAllUsers'])->name('/user/membersList');
 
     Route::post('/user/update-profile', [HomeController::class, 'updateProfile'])->name('user.update-profile');
+    Route::post('/user/update-playlist_name', [HomeController::class, 'updatePlaylistName'])->name('user.update-playlist_name');
     Route::get('/user/{id}', [HomeController::class, 'show'])->name('user.show');
 
     
@@ -71,6 +72,11 @@ Route::middleware([
     Route::get('/get-liked-songs', [SongController::class, 'getLikedSongs']);
     Route::get('/get-rated-songs', [SongController::class, 'getRatedSongs']);
     Route::get('/get-playlist', [SongController::class, 'getPlaylist']);
+  
+    Route::get('/get-liked-songs/{id}', [SongController::class, 'getLikedSongsOfUser']);
+    Route::get('/get-rated-songs/{id}', [SongController::class, 'getRatedSongsOfUser']);
+    Route::get('/get-playlist/{id}', [SongController::class, 'getPlaylistOfUser']);
+    
     Route::get('/get-song-details/music-brainz/{id}', [SongController::class, 'getSongDetailsFromMusicBrainz']);
     Route::post('/report-song', [SongController::class, 'reportSong']);
     Route::get('/get-reported-songs', 'SongController@getReportedSongs');
