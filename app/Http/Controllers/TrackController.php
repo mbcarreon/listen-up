@@ -81,6 +81,7 @@ class TrackController extends Controller
                 'duration' => $track["duration"],
                 'genre' => $track["genre"],
                 'song_link' => $track["song_link"],
+                'isReported' => $track["isReported"],
                 'hasLikedSong' => isset($likedSongs[$track["id"]]),
             ];
             return response()->json($songObject);

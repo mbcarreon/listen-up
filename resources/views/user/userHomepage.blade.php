@@ -336,7 +336,7 @@
                                         </a>
                                     </div>`).join('')}`;
                         } else {
-                            trackList.innerHTML = '<p>No songs in featured tracks found</p>';
+                            trackList.innerHTML = '<p>No songs in submitted tracks found</p>';
                         }
                     })
                     .catch(error => {

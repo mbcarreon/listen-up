@@ -40,7 +40,35 @@
                         console.error('Error fetching reported tracks:', error);
                     });
             }
+            function displayAllTracks() {
+                fetch('/tracks/all')
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(JSON.stringify(data.tracks, null,2));
+                        const allTracksList = document.getElementById('allTracksList');
+                        const tracks = data.tracks || {};
+
+                        if (Object.keys(tracks).length > 0) {
+                            allTracksList.innerHTML =
+                                `<ul>
+                                    ${Object.values(tracks).map(song => 
+                                        `<a href="#" onclick="showReportModal('${song.id}'); return false;">
+                                            <li style="display: inline-block; margin-right: 10px;"> 
+                                                <img src="/${song.cover}" alt="Default Profile Image" style="width: 150px; height: 150px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                                                ${song.title} 
+                                            </li>
+                                        </a>`).join('')}
+                                </ul>`;
+                        } else {
+                            allTracksList.innerHTML = '<ul>There are no submitted tracks</ul>';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching reported tracks:', error);
+                    });
+            }
             displayReportedTracks();
+            displayAllTracks();
         </script>
     </x-slot>
 

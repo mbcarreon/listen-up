@@ -70,10 +70,8 @@
         })
         .then(response => response.json())
         .then(data => {
-            if (confirm(data.message) || !confirm(data.message)) {
-                document.getElementById('addTrackForm').reset();
-                $('#addTrackModal').modal('hide');
-            }
+            alert(data.message);
+            location.reload();
         })
         .catch(error => {
             console.error('Error submitting track:', error);

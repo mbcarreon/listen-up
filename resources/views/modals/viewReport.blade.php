@@ -27,7 +27,7 @@
                 //  Nag add ako ng "style="color: black;" since white yung text pag wala siya
                 //  Also, invisible yung like button
                 modalBody.innerHTML = `
-                    <h1 style="color: black;">REPORTED TRACK</h1>
+                    <h1 style="color: black;">${(song.isReported ? "REPORTED" : "SUBMITTED")} TRACK</h1>
                     <img src="/${song.cover}" alt="Cover Image" style="width: 100%; height: auto;">
                     <h2 style="color: black;">${song.title}</h2>
                     <p style="color: black;">Artist: ${song.artist}</p>
@@ -36,7 +36,10 @@
                     <p style="color: black;">Genre: ${song.genre}</p>
                     <p style="color: black;">Country: ${song.country}</p>
                     <button onclick="deleteTrack('${songId}')" style="background-color: #dc3545; color: #fff; border: none; padding: 10px 20px; cursor: pointer; margin-right: 10px;">Delete Track</button>
-                    <button onclick="resolveTrack('${songId}')" style="background-color: #28a745; color: #fff; border: none; padding: 10px 20px; cursor: pointer;">Mark as Resolved</button>
+                    ${song.isReported 
+                        ? `<button onclick='resolveTrack("${songId}")' style='background-color: #28a745; color: #fff; border: none; padding: 10px 20px; cursor: pointer;'>Mark as Resolved</button>`
+                        : ""
+                    }
                 `;
                 // Show the modal
                 $('#reportModal').modal('show');
@@ -60,6 +63,7 @@
         .then(response => response.json())
         .then(data => {
             alert(data.message);
+            location.reload();
         })
         .catch(error => {
             console.error('Error deleting song:', error);
@@ -81,6 +85,7 @@
         .then(response => response.json())
         .then(data => {
             alert(data.message);
+            location.reload();
         })
         .catch(error => {
             console.error('Error resolving song:', error);
