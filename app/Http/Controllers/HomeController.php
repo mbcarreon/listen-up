@@ -37,11 +37,13 @@ class HomeController extends Controller {
       $user = Auth::user();
       
       $request->validate([
-         'name' => ['required', 'string', 'max:255', 'unique:users'],
+         'name' => 'required|unique:users,name,' . $user->id . '|max:255',
          'bio' => 'nullable|string|max:255',
          'location' => 'nullable|string|max:255',
          'birthdate' => 'nullable|date',
          'profile_image' => 'nullable|mimes:jpg,jpeg,png',
+     ], [
+         'name.unique' => 'The entered name is already in use. Please choose a different name.',
      ]);
   
       if ($request->hasFile('profile_image')) {
