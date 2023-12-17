@@ -64,7 +64,9 @@ class HomeController extends Controller {
          'birthdate' => $request->input('birthdate'),
       ]);
   
-      return redirect()->back()->with('success', 'Profile updated successfully');
+      $request->session()->flash('success', 'Profile updated successfully');
+
+      return redirect()->back();
    }
 
    public function show($id) {
