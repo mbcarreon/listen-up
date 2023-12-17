@@ -34,6 +34,7 @@ class User extends Authenticatable
         'liked_songs',
         'rated_songs',
         'playlist',
+        'playlist_name',
         'role'
     ];
 
