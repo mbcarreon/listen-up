@@ -83,4 +83,11 @@ class TrackController extends Controller
             return response()->json(['message' => 'Track not found'], 404);
         }
     }
+
+    public function reportTrack(Request $request) {
+        $songId = $request->input('songId');
+        $track = Track::find($songId);
+        $track->update(['isReported' => true]);
+        return response()->json(['message' => 'Track has been reported successfully.']);
+    }
 }

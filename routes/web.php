@@ -83,12 +83,12 @@ Route::middleware([
     // Add this route to handle the "Make Admin" action in HomeController
     Route::post('/make-admin/{user}', [HomeController::class, 'makeAdmin'])->name('make-admin');
 
-
-
     Route::post('/tracks/store', [TrackController::class, 'store'])->name('tracks.store');
     Route::get('/tracks/all', [TrackController::class, 'getAllTracks'])->name('tracks.all');
     Route::get('/tracks/homepage', [TrackController::class, 'getHomepageTracks'])->name('tracks.homepage');
     Route::get('/get-song-details/listen-up/{id}', [TrackController::class, 'getSongDetailsFromListenUp']);
+    
+    Route::post('/report-track', [TrackController::class, 'reportTrack']);
 });
 
 //for viewing music list

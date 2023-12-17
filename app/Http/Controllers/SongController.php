@@ -74,10 +74,7 @@ class SongController extends Controller
             return response()->json(['message' => 'Song added to liked songs.']);
         }
     }
-
-    public function reportSong(Request $request) {
-    //
-    }
+    
     public function rateSong(Request $request) {
         $user = Auth::user();
         $ratedSongs = $user->rated_songs ?? [];
@@ -177,10 +174,5 @@ class SongController extends Controller
         $playlist = $user->playlist ?? [];
 
         return response()->json(['playlist' => $playlist]);
-    }
-
-    public function getReportedSongs(Request $request)
-    {
-    //
     }
 }

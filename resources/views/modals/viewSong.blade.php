@@ -36,7 +36,7 @@
                         <button onclick="likeSong('${song.id}')">
                             <i class="fas fa-heart heart${song.hasLikedSong ? ' clicked' : ''}" onclick="toggleHeart(this)"></i>
                         </button>
-                        <button onclick="reportSong(${song.id})" style="color: black;">!</button>
+                        <button onclick="reportTrack('${song.id}')" style="color: black;">!</button>
                         <button onclick="addToPlaylist('${song.id}')" style="color: black;">+</button>
                     `;
                     // Show the modal
@@ -71,6 +71,7 @@
             .catch(error => {
                 console.error('Error fetching song details:', error);
             });
+        }
     }
 
     function likeSong(songId) {
@@ -97,9 +98,27 @@
     function toggleHeart(element) {
         element.classList.toggle('clicked');
     }
-    function reportSong(songId) {
+    function reportTrack(songId) {
         // Implement report functionality
-        console.log(`Reported song with ID: ${songId}`);
+        console.log(`Reported track with ID: ${songId}`);
+        fetch('/report-track', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': @json(csrf_token()), // Include CSRF token if needed
+            },
+            body: JSON.stringify({
+                songId: songId,
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+        })
+        .catch(error => {
+            console.error('Error reporting song:', error);
+        });
+
     }
     function addToPlaylist(songId) {
         // Implement add to playlist functionality

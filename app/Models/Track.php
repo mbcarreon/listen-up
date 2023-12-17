@@ -18,5 +18,6 @@ class Track extends Model
         'duration',
         'cover',
         'song_link',
+        'isReported',
     ];
 }

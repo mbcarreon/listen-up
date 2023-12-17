@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('duration')->nullable();
             $table->string('cover')->nullable();
             $table->string('song_link');
+            $table->boolean('isReported')->default(false);
             $table->timestamps();
         });
     }
