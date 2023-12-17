@@ -23,7 +23,7 @@ return new class extends Migration
             $table->json('liked_songs')->nullable();
             $table->json('rated_songs')->nullable();
             $table->json('playlist')->nullable();
-            $table->string('playlist_name')->default("Playlist");
+            $table->string('playlist_name')->default("No Playlist Name");
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
