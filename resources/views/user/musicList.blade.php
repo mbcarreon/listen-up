@@ -142,7 +142,7 @@
         <hr style="border-color: white;">
 
         <div class="card1">
-            <a href="#" onclick="showSongModal('0e627f75-4818-40f0-b3c3-a526b0406649'); return false;">
+            <a href="#" onclick="showSongModal('0e627f75-4818-40f0-b3c3-a526b0406649','musicBrainz'); return false;">
                 <div class="overlayer">
                     <i class="far fa-play-circle"></i>
                 </div>
@@ -156,7 +156,7 @@
         </div>
 
         <div class="card1">
-            <a href="#" onclick="showSongModal('4ab59ccd-6afa-4dd4-9430-28c76342be9d'); return false;">
+            <a href="#" onclick="showSongModal('4ab59ccd-6afa-4dd4-9430-28c76342be9d','musicBrainz'); return false;">
                 <div class="overlayer">
                     <i class="far fa-play-circle"></i>
                 </div>
@@ -170,7 +170,7 @@
         </div>
 
         <div class="card1">
-            <a href="#" onclick="showSongModal('c9319bbc-8dec-4c7c-8934-ee234345f705'); return false;">
+            <a href="#" onclick="showSongModal('c9319bbc-8dec-4c7c-8934-ee234345f705','musicBrainz'); return false;">
                 <div class="overlayer">
                     <i class="far fa-play-circle"></i>
                 </div>
@@ -184,7 +184,7 @@
         </div>
 
         <div class="card1">
-            <a href="#" onclick="showSongModal('e139bd8d-410c-41c1-967c-a30ee3b444e8'); return false;">
+            <a href="#" onclick="showSongModal('e139bd8d-410c-41c1-967c-a30ee3b444e8','musicBrainz'); return false;">
                 <div class="overlayer">
                     <i class="far fa-play-circle"></i>
                 </div>
@@ -198,7 +198,7 @@
         </div>
 
         <div class="card1">
-            <a href="#" onclick="showSongModal('19b6d048-f981-40e9-8235-a5acf969e5df'); return false;">
+            <a href="#" onclick="showSongModal('19b6d048-f981-40e9-8235-a5acf969e5df','musicBrainz'); return false;">
                 <div class="overlayer">
                     <i class="far fa-play-circle"></i>
                 </div>

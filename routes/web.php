@@ -73,7 +73,10 @@ Route::middleware([
     Route::get('/get-playlist', [SongController::class, 'getPlaylist']);
     Route::get('/get-song-details/music-brainz/{id}', [SongController::class, 'getSongDetailsFromMusicBrainz']);
 
-    Route::post('/tracks', [TrackController::class, 'store'])->name('tracks.store');
+    Route::post('/tracks/store', [TrackController::class, 'store'])->name('tracks.store');
+    Route::get('/tracks/all', [TrackController::class, 'getAllTracks'])->name('tracks.all');
+    Route::get('/tracks/homepage', [TrackController::class, 'getHomepageTracks'])->name('tracks.homepage');
+    Route::get('/get-song-details/listen-up/{id}', [TrackController::class, 'getSongDetailsFromListenUp']);
 });
 
 //for viewing music list

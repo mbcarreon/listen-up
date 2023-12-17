@@ -33,7 +33,7 @@
                                 `<h3>Rated Songs</h3>
                                 <ul>
                                     ${Object.values(ratedSongs).map(song => 
-                                        `<a href="#" onclick="showSongModal('${song.id}'); return false;">
+                                        `<a href="#" onclick="showSongModal('${song.id}','musicBrainz'); return false;">
                                             <li style="display: inline-block; margin-right: 10px;"> 
                                                 <img src="http://coverartarchive.org/release/${song.releaseId}/front" alt="Default Profile Image" style="width: 150px; height: 150px; border-radius: 5px 5px 0 0; object-fit: cover;">
                                                 ${song.title} 

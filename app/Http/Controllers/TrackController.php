@@ -49,4 +49,38 @@ class TrackController extends Controller
             return response()->json(['message' => 'An error occured during your request']);
         }
     }
+
+    public function getAllTracks()
+    {
+        $tracks = Track::all();
+        return response()->json(['tracks' => $tracks]);
+    }
+
+    public function getHomepageTracks()
+    {
+        $tracks = Track::paginate(5);
+        return response()->json(['tracks' => $tracks]);
+    }
+
+    public function getSongDetailsFromListenUp($id)
+    {
+        $track = Track::find($id);
+        if ($track) {
+            $songObject = [
+                'id' => $track["id"],
+                'cover' => $track["cover"],
+                'album' => $track["album"],
+                'country' => $track["releases"][0]["country"] ?? "N/A",
+                'title' => $track["title"],
+                'artist' => $track["artist"],
+                'duration' => $track["duration"],
+                'genre' => $track["genre"],
+                'song_link' => $track["song_link"],
+                'hasLikedSong' => isset($likedSongs[$track["id"]]),
+            ];
+            return response()->json($songObject);
+        } else {
+            return response()->json(['message' => 'Track not found'], 404);
+        }
+    }
 }
