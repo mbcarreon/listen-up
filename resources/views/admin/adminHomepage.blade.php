@@ -191,6 +191,8 @@
  
         <p>SUBMITTED TRACKS</p>
         <hr style="border-color: white;">
+        
+        <div id="trackList"></div>
 
         
         <p>POPULAR</p>
@@ -269,7 +271,115 @@
 
         <p>NEW RELEASES</p>
         <hr style="border-color: white;">
+        <div class="card1">
+            <a href="#" onclick="showSongModal('21883f29-b8aa-4d56-a3c9-a2ed44550bce','musicBrainz'); return false;">
+                <div class="overlayer">
+                    <i class="far fa-play-circle"></i>
+                </div>
+                <img src="{{ asset('image/musicList/raining-in-manila.jpg') }}" alt="Default Profile Image"
+                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                <div class="title1">
+                    <b>Raining in Manila</b>
+                    <p>Lola Amour</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="card1">
+            <a href="#" onclick="showSongModal('92a2bfc3-a633-4d7f-b496-f81b0fe0071d','musicBrainz'); return false;">
+                <div class="overlayer">
+                    <i class="far fa-play-circle"></i>
+                </div>
+                <img src="{{ asset('image/musicList/3d.jpg') }}" alt="Default Profile Image"
+                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                <div class="title1">
+                    <b>3D</b>
+                    <p>Jung Kook</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="card1">
+            <a href="#" onclick="showSongModal('11621eae-b333-4597-b944-4fd99ada3c6f','musicBrainz'); return false;">
+                <div class="overlayer">
+                    <i class="far fa-play-circle"></i>
+                </div>
+                <img src="{{ asset('image/musicList/american-town.jpg') }}" alt="Default Profile Image"
+                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                <div class="title1">
+                    <b>American Town</b>
+                    <p>Ed Sheeran</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="card1">
+            <a href="#" onclick="showSongModal('a219e5fe-eac4-4aec-ab6d-ff2b81481e97','musicBrainz'); return false;">
+                <div class="overlayer">
+                    <i class="far fa-play-circle"></i>
+                </div>
+                <img src="{{ asset('image/musicList/711.jpg') }}" alt="Default Profile Image"
+                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                <div class="title1">
+                    <b>711</b>
+                    <p>TONEEJAY</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="card1">
+            <a href="#" onclick="showSongModal('8f667b90-a2a4-46ea-8806-e957ea78c7bd','musicBrainz'); return false;">
+                <div class="overlayer">
+                    <i class="far fa-play-circle"></i>
+                </div>
+                <img src="{{ asset('image/musicList/my-love-mine-all-mine.jpg') }}" alt="Default Profile Image"
+                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                <div class="title1">
+                    <b>My Love Mine All Mine</b>
+                    <p>Mitski</p>
+                </div>
+            </a>
+        </div>
         <br>
         <br>
+        <script type="text/javascript">
+            function showHomepageTracks() {
+                fetch('/tracks/homepage')
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log("Testingggg");
+                        const trackList = document.getElementById('trackList');
+                        const tracks = data.tracks.data || {};
+                        console.log(tracks);
+
+                        if (Object.keys(tracks).length > 0) {
+                            trackList.innerHTML =
+                                `${Object.values(tracks).map(track => 
+                                    `<div class="card1">
+                                        <a href="#" onclick="showSongModal('${track.id}', 'listenUp'); return false;">
+                                            <div class="overlayer">
+                                                <i class="far fa-play-circle"></i>
+                                            </div>
+                                            <img src="{{ asset('${track.cover}') }}" alt="Default Profile Image" onerror="this.src='{{ asset('image/DefaultSongCover.png') }}';";
+                                                style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                                            <div class="title1">
+                                                <b>${track.title}</b>
+                                                <p>${track.artist}</p>
+                                            </div>
+                                        </a>
+                                    </div>`).join('')}`;
+                        } else {
+                            trackList.innerHTML = '<p>No songs in submitted tracks found</p>';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching tracks:', error);
+                    });
+            }
+
+            // Call the function to display liked songs on page load
+            console.log("Testing");
+            showHomepageTracks();
+        </script>
     </x-slot>
 </x-app-layout>

@@ -25,7 +25,7 @@ class SongController extends Controller
 
         $songObject = [
             'id' => $song["id"],
-            'cover' => "http://coverartarchive.org/release/" . $song["releases"][0]["id"] . "/front" ?? "N/A",
+            'cover' => "http://coverartarchive.org/release/" . $song["releases"][0]["id"] . "/front" ?? "image/DefaultSongCover.png",
             'album' => $song["releases"][0]["title"] ?? "N/A",
             'country' => $song["releases"][0]["country"] ?? "N/A",
             'title' => $song["title"] ?? "N/A",

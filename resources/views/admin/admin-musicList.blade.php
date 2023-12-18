@@ -54,7 +54,7 @@
                                     ${Object.values(tracks).map(song => 
                                         `<a href="#" onclick="showReportModal('${song.id}'); return false;">
                                             <li style="display: inline-block; margin-right: 10px;"> 
-                                                <img src="/${song.cover}" alt="Default Profile Image" style="width: 150px; height: 150px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                                                <img src="/${song.cover}" alt="Default Profile Image" onerror="this.src='{{ asset('image/DefaultSongCover.png') }}';"; style="width: 150px; height: 150px; border-radius: 5px 5px 0 0; object-fit: cover;">
                                                 ${song.title} 
                                             </li>
                                         </a>`).join('')}
