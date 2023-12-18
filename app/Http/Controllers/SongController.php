@@ -30,7 +30,7 @@ class SongController extends Controller
             'country' => $song["releases"][0]["country"] ?? "N/A",
             'title' => $song["title"] ?? "N/A",
             'artist' => $song["artist-credit"][0]["name"] ?? "N/A",
-            'duration' => $song["length"] . " ms" ?? "N/A",
+            'duration' => $this->convertMsToMins($song["length"]) ?? "N/A",
             'genre' => $song["tags"][0]["name"] ?? "N/A",
             'song_link' => "No Link",
             'hasLikedSong' => isset($likedSongs[$song["id"]]),
@@ -174,5 +174,18 @@ class SongController extends Controller
         $playlist = $user->playlist ?? [];
 
         return response()->json(['playlist' => $playlist]);
+    }
+
+    private function convertMsToMins($milliseconds)
+    {
+        if ($milliseconds) {
+            $seconds = floor($milliseconds / 1000);
+            $minutes = floor($seconds / 60);
+            $seconds %= 60;
+
+            return $minutes . ':' . sprintf('%02d', $seconds);
+        }
+
+        return null;
     }
 }
