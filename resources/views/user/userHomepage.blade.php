@@ -244,7 +244,7 @@
         <hr style="border-color: white;">
 
         <div class="card1">
-            <a href="#" onclick="showSongModal('0e627f75-4818-40f0-b3c3-a526b0406649','musicBrainz'); return false;">
+            <a href="#" onclick="showSongModal('0e627f75-4818-40f0-b3c3-a526b0406649','MusicBrainz'); return false;">
                 <div class="overlayer">
                     <i class="far fa-play-circle"></i>
                 </div>
@@ -258,7 +258,7 @@
         </div>
 
         <div class="card1">
-            <a href="#" onclick="showSongModal('4ab59ccd-6afa-4dd4-9430-28c76342be9d','musicBrainz'); return false;">
+            <a href="#" onclick="showSongModal('4ab59ccd-6afa-4dd4-9430-28c76342be9d','MusicBrainz'); return false;">
                 <div class="overlayer">
                     <i class="far fa-play-circle"></i>
                 </div>
@@ -272,7 +272,7 @@
         </div>
 
         <div class="card1">
-            <a href="#" onclick="showSongModal('c9319bbc-8dec-4c7c-8934-ee234345f705','musicBrainz'); return false;">
+            <a href="#" onclick="showSongModal('c9319bbc-8dec-4c7c-8934-ee234345f705','MusicBrainz'); return false;">
                 <div class="overlayer">
                     <i class="far fa-play-circle"></i>
                 </div>
@@ -286,7 +286,7 @@
         </div>
 
         <div class="card1">
-            <a href="#" onclick="showSongModal('e139bd8d-410c-41c1-967c-a30ee3b444e8','musicBrainz'); return false;">
+            <a href="#" onclick="showSongModal('e139bd8d-410c-41c1-967c-a30ee3b444e8','MusicBrainz'); return false;">
                 <div class="overlayer">
                     <i class="far fa-play-circle"></i>
                 </div>
@@ -300,7 +300,7 @@
         </div>
 
         <div class="card1">
-            <a href="#" onclick="showSongModal('19b6d048-f981-40e9-8235-a5acf969e5df','musicBrainz'); return false;">
+            <a href="#" onclick="showSongModal('19b6d048-f981-40e9-8235-a5acf969e5df','MusicBrainz'); return false;">
                 <div class="overlayer">
                     <i class="far fa-play-circle"></i>
                 </div>
@@ -317,7 +317,7 @@
         <p>NEW RELEASES</p>
         <hr style="border-color: white;">
         <div class="card1">
-            <a href="#" onclick="showSongModal('21883f29-b8aa-4d56-a3c9-a2ed44550bce','musicBrainz'); return false;">
+            <a href="#" onclick="showSongModal('21883f29-b8aa-4d56-a3c9-a2ed44550bce','MusicBrainz'); return false;">
                 <div class="overlayer">
                     <i class="far fa-play-circle"></i>
                 </div>
@@ -331,7 +331,7 @@
         </div>
 
         <div class="card1">
-            <a href="#" onclick="showSongModal('92a2bfc3-a633-4d7f-b496-f81b0fe0071d','musicBrainz'); return false;">
+            <a href="#" onclick="showSongModal('92a2bfc3-a633-4d7f-b496-f81b0fe0071d','MusicBrainz'); return false;">
                 <div class="overlayer">
                     <i class="far fa-play-circle"></i>
                 </div>
@@ -345,7 +345,7 @@
         </div>
 
         <div class="card1">
-            <a href="#" onclick="showSongModal('11621eae-b333-4597-b944-4fd99ada3c6f','musicBrainz'); return false;">
+            <a href="#" onclick="showSongModal('11621eae-b333-4597-b944-4fd99ada3c6f','MusicBrainz'); return false;">
                 <div class="overlayer">
                     <i class="far fa-play-circle"></i>
                 </div>
@@ -359,7 +359,7 @@
         </div>
 
         <div class="card1">
-            <a href="#" onclick="showSongModal('a219e5fe-eac4-4aec-ab6d-ff2b81481e97','musicBrainz'); return false;">
+            <a href="#" onclick="showSongModal('a219e5fe-eac4-4aec-ab6d-ff2b81481e97','MusicBrainz'); return false;">
                 <div class="overlayer">
                     <i class="far fa-play-circle"></i>
                 </div>
@@ -373,7 +373,7 @@
         </div>
 
         <div class="card1">
-            <a href="#" onclick="showSongModal('8f667b90-a2a4-46ea-8806-e957ea78c7bd','musicBrainz'); return false;">
+            <a href="#" onclick="showSongModal('8f667b90-a2a4-46ea-8806-e957ea78c7bd','MusicBrainz'); return false;">
                 <div class="overlayer">
                     <i class="far fa-play-circle"></i>
                 </div>
@@ -401,7 +401,7 @@
                             trackList.innerHTML =
                                 `${Object.values(tracks).map(track => 
                                     `<div class="card1">
-                                        <a href="#" onclick="showSongModal('${track.id}', 'listenUp'); return false;">
+                                        <a href="#" onclick="showSongModal('${track.id}', 'ListenUp'); return false;">
                                             <div class="overlayer">
                                                 <i class="far fa-play-circle"></i>
                                             </div>

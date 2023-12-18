@@ -29,7 +29,7 @@
     function showSongModal(songId, database) {
         // Fetch song details and populate the modal
         console.log("Test");
-        if(database == "listenUp") {
+        if(database == "ListenUp") {
             console.log("This is from ListenUpDatabase");
             fetch(`/get-song-details/listen-up/${songId}`)
                 .then(response => response.json())
@@ -99,7 +99,7 @@
         .then(response => response.json())
         .then(data => {
             const heartIcon = buttonElement.querySelector('.far.fa-heart') 
-                || buttonElement.querySelector('.fas.fa-heart') ;
+                || buttonElement.querySelector('.fas.fa-heart');
             if (heartIcon) {
                 console.log("HeartIcon found");
                 heartIcon.classList.toggle('fas');

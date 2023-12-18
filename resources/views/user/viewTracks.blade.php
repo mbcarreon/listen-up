@@ -20,7 +20,7 @@
                             allTracksList.innerHTML =
                                 `<ul>
                                     ${Object.values(tracks).map(song => `
-                                        <a href="#" onclick="showSongModal('${song.id}', 'listenUp'); return false;">
+                                        <a href="#" onclick="showSongModal('${song.id}', 'ListenUp'); return false;">
                                             <li style="display: inline-block; margin-right: 10px;"> 
                                                 <img src="/${song.cover}" alt="Default Profile Image" onerror="this.src='{{ asset('image/DefaultSongCover.png') }}';"; style="width: 150px; height: 150px; border-radius: 5px 5px 0 0; object-fit: cover;">
                                                 ${song.title} 

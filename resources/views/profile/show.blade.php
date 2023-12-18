@@ -103,7 +103,7 @@
                                 `<h3>Liked Songs</h3>
                                 <ul>
                                     ${Object.values(likedSongs).map(song => 
-                                        `<a href="#" onclick="showSongModal('${song.id}','musicBrainz'); return false;">
+                                        `<a href="#" onclick="showSongModal('${song.id}','MusicBrainz'); return false;">
                                             <li style="display: inline-block; margin-right: 10px;"> 
                                                 <img src="http://coverartarchive.org/release/${song.releaseId}/front" alt="Default Profile Image" onerror="this.src='{{ asset('image/DefaultSongCover.png') }}';"; style="width: 150px; height: 150px; border-radius: 5px 5px 0 0; object-fit: cover;">
                                                 ${song.title} 
