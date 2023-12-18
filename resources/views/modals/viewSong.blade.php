@@ -39,7 +39,7 @@
                     //  Nag add ako ng "style="color: black;" since white yung text pag wala siya
                     //  Also, invisible yung like button
                     modalBody.innerHTML = `
-                        <img src="${song.cover}" alt="Cover Image" style="width: 100%; height: auto;">
+                        <img src="/${song.cover}" alt="Cover Image" style="width: 100%; height: auto;">
                         <h2 style="color: black;">${song.title}</h2>
                         <p style="color: black;">Artist: ${song.artist}</p>
                         <a href="${song.song_link}" target="_blank">Play</a>

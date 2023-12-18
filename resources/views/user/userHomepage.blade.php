@@ -127,6 +127,16 @@
         .modal-content .form-group {
             color: #000;
         }
+            
+        .paragraph-container {
+        position: relative;
+        }
+
+        .link-at-right {
+        position: absolute;
+        top: 0;
+        right: 0;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
@@ -188,8 +198,6 @@
             </button>
         </div>
 
-
-
         <div class="card1">
             <div class="overlayer1">
                 <i class="far fa-play-circle"></i>
@@ -225,9 +233,10 @@
 
         @include('modals.viewSong')
 
- 
-        <p>SUBMITTED TRACKS</p>
-        <hr style="border-color: white;">
+        <div class="paragraph-container">
+            <p>SUBMITTED TRACKS <a href="/user/viewTracks" class="link-at-right">See All</a></p>
+            <hr style="border-color: white;">
+        </div>
         
         <div id="trackList"></div>
 

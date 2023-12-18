@@ -50,6 +50,10 @@ Route::middleware([
         return view('user/viewPlaylist');
     })->name('user/viewPlaylist');
 
+    Route::get('/user/viewTracks', function () {
+        return view('user/viewTracks');
+    })->name('user/viewTracks');
+
     Route::get('/admin/admin-musicList', function () {
         return view('admin/admin-musicList');
     })->name('admin/admin-musicList');
