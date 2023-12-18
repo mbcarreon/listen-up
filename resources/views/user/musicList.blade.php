@@ -287,7 +287,7 @@
                                 <thead>
                                     <tr>
                                         <th>Song Name</th>
-                                        <th>Like</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>

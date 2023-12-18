@@ -987,149 +987,141 @@
 
         @include('modals.viewSong')
         <div class="section" id="discover-section">
-      
+
             <div>
                 <p class="text-3xl font-semibold text-white mb-4">Popular</p>
-        <hr style="border-color: white;">
+                <hr style="border-color: white;">
 
-        <div class="card1">
-            <a href="/login" >
-                <div class="overlayer">
-                    <i class="far fa-play-circle"></i>
-                </div>
-                <img src="{{ asset('image/musicList/buwan.jpg') }}" alt="Default Profile Image"
-                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
-                <div class="title1">
-                    <b>Buwan</b>
-                    <p>juan carlos</p>
-                </div>
-            </a>
-        </div>
-
-        <div class="card1">
-        <a href="/login" >
-                <div class="overlayer">
-                    <i class="far fa-play-circle"></i>
-                </div>
-                <img src="{{ asset('image/musicList/next-to-you.jpg') }}" alt="Default Profile Image"
-                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
-                <div class="title1">
-                    <b>Next to you</b>
-                    <p>Chris Brown</p>
-                </div>
-            </a>
-        </div>
-
-        <div class="card1">
-        <a href="/login" >
-                <div class="overlayer">
-                    <i class="far fa-play-circle"></i>
-                </div>
-                <img src="{{ asset('image/musicList/i-like-me-better.jpg') }}" alt="Default Profile Image"
-                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
-                <div class="title1">
-                    <b>I Like Me Better</b>
-                    <p>Lauv</p>
-                </div>
-            </a>
-        </div>
-
-        <div class="card1">
-        <a href="/login" >
-                <div class="overlayer">
-                    <i class="far fa-play-circle"></i>
-                </div>
-                <img src="{{ asset('image/musicList/butter.jpg') }}" alt="Default Profile Image"
-                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
-                <div class="title1">
-                    <b>Butter</b>
-                    <p>BTS</p>
-                </div>
-            </a>
-        </div>
-
-            <p class="text-3xl font-semibold text-white mb-4">New Release</p>
-            <br>
-
-
-            <div class="card1">
-                <div class="overlayer">
-                    <i class="far fa-play-circle"></i>
-                </div>
-                <img src="{{ asset('image/musicList/jk.jpg') }}" alt="Default Profile Image"
-                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
-                <div class="title1">
-                    <a href="https://www.youtube.com/watch?v=KK3tIclJ140" target="_blank"><b>Buwan</b>
-                        <p>Juan Karlos</p>
+                <div class="card1">
+                    <a href="/login">
+                        <div class="overlayer">
+                            <i class="far fa-play-circle"></i>
+                        </div>
+                        <img src="{{ asset('image/musicList/buwan.jpg') }}" alt="Default Profile Image"
+                            style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                        <div class="title1">
+                            <b>Buwan</b>
+                            <p>juan carlos</p>
+                        </div>
                     </a>
                 </div>
+
+                <div class="card1">
+                    <a href="/login">
+                        <div class="overlayer">
+                            <i class="far fa-play-circle"></i>
+                        </div>
+                        <img src="{{ asset('image/musicList/next-to-you.jpg') }}" alt="Default Profile Image"
+                            style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                        <div class="title1">
+                            <b>Next to you</b>
+                            <p>Chris Brown</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card1">
+                    <a href="/login">
+                        <div class="overlayer">
+                            <i class="far fa-play-circle"></i>
+                        </div>
+                        <img src="{{ asset('image/musicList/i-like-me-better.jpg') }}" alt="Default Profile Image"
+                            style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                        <div class="title1">
+                            <b>I Like Me Better</b>
+                            <p>Lauv</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card1">
+                    <a href="/login">
+                        <div class="overlayer">
+                            <i class="far fa-play-circle"></i>
+                        </div>
+                        <img src="{{ asset('image/musicList/butter.jpg') }}" alt="Default Profile Image"
+                            style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                        <div class="title1">
+                            <b>Butter</b>
+                            <p>BTS</p>
+                        </div>
+                    </a>
+                </div>
+
+                <p class="text-3xl font-semibold text-white mb-4">New Releases</p>
+                <hr style="border-color: white;">
+                <div class="card1">
+                    <a href="/login">
+                        <div class="overlayer">
+                            <i class="far fa-play-circle"></i>
+                        </div>
+                        <img src="{{ asset('image/musicList/raining-in-manila.jpg') }}" alt="Default Profile Image"
+                            style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                        <div class="title1">
+                            <b>Raining in Manila</b>
+                            <p>Lola Amour</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card1">
+                    <a href="/login">
+                        <div class="overlayer">
+                            <i class="far fa-play-circle"></i>
+                        </div>
+                        <img src="{{ asset('image/musicList/3d.jpg') }}" alt="Default Profile Image"
+                            style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                        <div class="title1">
+                            <b>3D</b>
+                            <p>Jung Kook</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card1">
+                    <a href="/login">
+                        <div class="overlayer">
+                            <i class="far fa-play-circle"></i>
+                        </div>
+                        <img src="{{ asset('image/musicList/american-town.jpg') }}" alt="Default Profile Image"
+                            style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                        <div class="title1">
+                            <b>American Town</b>
+                            <p>Ed Sheeran</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card1">
+                    <a href="/login">
+                        <div class="overlayer">
+                            <i class="far fa-play-circle"></i>
+                        </div>
+                        <img src="{{ asset('image/musicList/711.jpg') }}" alt="Default Profile Image"
+                            style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                        <div class="title1">
+                            <b>711</b>
+                            <p>TONEEJAY</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card1">
+                    <a href="/login">
+                        <div class="overlayer">
+                            <i class="far fa-play-circle"></i>
+                        </div>
+                        <img src="{{ asset('image/musicList/my-love-mine-all-mine.jpg') }}" alt="Default Profile Image"
+                            style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                        <div class="title1">
+                            <b>My Love Mine All Mine</b>
+                            <p>Mitski</p>
+                        </div>
+                    </a>
+                </div>
+
             </div>
 
-            <div class="card1">
-                <div class="overlayer">
-                    <i class="far fa-play-circle"></i>
-                </div>
-                <img src="{{ asset('image/musicList/cb.png') }}" alt="Default Profile Image"
-                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
-                <div class="title1">
-                    <a href="#"><b>Next to you</b>
-                        <p>Chris Brown</p>
-                    </a>
-                </div>
-            </div>
-            <div class="card1">
-                <div class="overlayer">
-                    <i class="far fa-play-circle"></i>
-                </div>
-                <img src="{{ asset('image/musicList/cb.png') }}" alt="Default Profile Image"
-                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
-                <div class="title1">
-                <a href="/login" ><b>Next to you</b>
-                        <p>Chris Brown</p>
-                    </a>
-                </div>
-            </div>
-            <div class="card1">
-                <div class="overlayer">
-                    <i class="far fa-play-circle"></i>
-                </div>
-                <img src="{{ asset('image/musicList/cb.png') }}" alt="Default Profile Image"
-                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
-                <div class="title1">
-                <a href="/login" ><b>Next to you</b>
-                        <p>Chris Brown</p>
-                    </a>
-                </div>
-            </div>
-            <div class="card1">
-                <div class="overlayer">
-                    <i class="far fa-play-circle"></i>
-                </div>
-                <img src="{{ asset('image/musicList/cb.png') }}" alt="Default Profile Image"
-                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
-                <div class="title1">
-                <a href="/login" ><b>Next to you</b>
-                        <p>Chris Brown</p>
-                    </a>
-                </div>
-            </div>
-            <div class="card1">
-                <div class="overlayer">
-                    <i class="far fa-play-circle"></i>
-                </div>
-                <img src="{{ asset('image/musicList/cb.png') }}" alt="Default Profile Image"
-                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
-                <div class="title1">
-                    <a href="#"><b>Next to you</b>
-                        <p>Chris Brown</p>
-                    </a>
-                </div>
-            </div>
-            </div>
-        </div>
-
-    </div>
-    
 
 </body>
 <script>
