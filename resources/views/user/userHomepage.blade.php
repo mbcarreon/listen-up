@@ -224,7 +224,7 @@
             <div class="overlayer1">
                 <i class="far fa-play-circle"></i>
             </div>
-            <img src="{{ asset('image/homepage/submit.jpg') }}" alt="Default Profile Image"
+            <img src="{{ asset('image/homepage/rated.jpg') }}" alt="Default Profile Image"
                 style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover;">
             <div class="title1">
                 <a href="user/viewRating"><b>View Rated Tracks</b></a>
