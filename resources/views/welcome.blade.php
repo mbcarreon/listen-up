@@ -1047,6 +1047,19 @@
                         </div>
                     </a>
                 </div>
+                <div class="card1">
+                <a href="/login">
+                <div class="overlayer">
+                    <i class="far fa-play-circle"></i>
+                </div>
+                <img src="{{ asset('image/musicList/attention.jpg') }}" alt="Default Profile Image"
+                    style="width: 200px; height: 200px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                <div class="title1">
+                    <b>Attention</b>
+                    <p>Charlie Puth</p>
+                </div>
+            </a>
+        </div>
 
                 <p class="text-3xl font-semibold text-white mb-4">New Releases</p>
                 <hr style="border-color: white;">

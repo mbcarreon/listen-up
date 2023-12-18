@@ -14,7 +14,7 @@
         @endif
 
         <br>
-        <a onClick="update()" href="javascript:void(0)" class="btn btn-info">Edit Playlist Name</a>
+        <a onClick="update()" href="javascript:void(0)" class="btn" style="background-color: #aed581; color: #000;">Edit Playlist Name</a>
         <hr style="border-color: white;">
         <ul id="playlistList" style="white-space: nowrap; overflow-x: auto;"></ul>
         <div class="modal fade" id="playlist_name" tabindex="-1" aria-hidden="true">
@@ -37,7 +37,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">update</button>
+                                <button type="submit" class="btn" style="background-color: #aed581; color: #000;">update</button>
                             </form>
                         </div>
                     </div>
