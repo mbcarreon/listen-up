@@ -39,9 +39,9 @@
                             `<h3>Playlist Name: {{ $user->playlist_name }} </h3>
                                 <ul>
                                     ${Object.values(playlist).map(song => 
-                                        `<a href="#" onclick="showSongModal('${song.id}','MusicBrainz'); return false;">
+                                        `<a href="#" onclick="showSongModal('${song.id}','${song.db}'); return false;">
                                             <li style="display: inline-block; margin-right: 10px;"> 
-                                                <img src="http://coverartarchive.org/release/${song.releaseId}/front" alt="Default Profile Image" onerror="this.src='{{ asset('image/DefaultSongCover.png') }}';"; style="width: 150px; height: 150px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                                                <img src="${song.db == "MusicBrainz" ? `http://coverartarchive.org/release/${song.releaseId}/front` : `/${song.cover}`}" alt="Default Profile Image" onerror="this.src='{{ asset('image/DefaultSongCover.png') }}';"; style="width: 150px; height: 150px; border-radius: 5px 5px 0 0; object-fit: cover;">
                                                 ${song.title} 
                                             </li>
                                         </a>`).join('')}
@@ -66,9 +66,9 @@
                                 `<h3>Liked Songs</h3>
                                 <ul>
                                     ${Object.values(likedSongs).map(song => 
-                                        `<a href="#" onclick="showSongModal('${song.id}','MusicBrainz'); return false;">
+                                        `<a href="#" onclick="showSongModal('${song.id}','${song.db}'); return false;">
                                             <li style="display: inline-block; margin-right: 10px;"> 
-                                                <img src="http://coverartarchive.org/release/${song.releaseId}/front" alt="Default Profile Image" onerror="this.src='{{ asset('image/DefaultSongCover.png') }}';"; style="width: 150px; height: 150px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                                                <img src="${song.db == "MusicBrainz" ? `http://coverartarchive.org/release/${song.releaseId}/front` : `/${song.cover}`}" alt="Default Profile Image" onerror="this.src='{{ asset('image/DefaultSongCover.png') }}';"; style="width: 150px; height: 150px; border-radius: 5px 5px 0 0; object-fit: cover;">
                                                 ${song.title} 
                                             </li>
                                         </a>`).join('')}
@@ -93,9 +93,9 @@
                                 `<h3>Rated Songs</h3>
                                 <ul>
                                     ${Object.values(ratedSongs).map(song => 
-                                        `<a href="#" onclick="showSongModal('${song.id}','MusicBrainz'); return false;">
+                                        `<a href="#" onclick="showSongModal('${song.id}','${song.db}'); return false;">
                                             <li style="display: inline-block; margin-right: 10px;"> 
-                                                <img src="http://coverartarchive.org/release/${song.releaseId}/front" alt="Default Profile Image" onerror="this.src='{{ asset('image/DefaultSongCover.png') }}';"; style="width: 150px; height: 150px; border-radius: 5px 5px 0 0; object-fit: cover;">
+                                                <img src="${song.db == "MusicBrainz" ? `http://coverartarchive.org/release/${song.releaseId}/front` : `/${song.cover}`}" alt="Default Profile Image" onerror="this.src='{{ asset('image/DefaultSongCover.png') }}';"; style="width: 150px; height: 150px; border-radius: 5px 5px 0 0; object-fit: cover;">
                                                 ${song.title} 
                                             </li>
                                         </a>`).join('')}

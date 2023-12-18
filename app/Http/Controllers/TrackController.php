@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Track;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Track;
 
 class TrackController extends Controller
 {
@@ -69,6 +72,9 @@ class TrackController extends Controller
 
     public function getSongDetailsFromListenUp($id)
     {
+        $user = Auth::user();
+        $likedSongs = $user->liked_songs ?? [];
+
         $track = Track::find($id);
         if ($track) {
             $songObject = [
@@ -114,5 +120,78 @@ class TrackController extends Controller
         $track = Track::find($songId);
         $track->update(['isReported' => false]);
         return response()->json(['message' => 'Track has been resolved successfully.']);
+    }
+    
+    public function likeTrack(Request $request) {
+        $user = Auth::user();
+        $likedSongs = $user->liked_songs ?? [];
+
+        // Get the song id from the request
+        $songId = $request->input('songId');
+
+        // Retrieves song metadata from MusicBrainz
+        $songResponse = $this->getSongDetailsFromListenUp($songId);
+        
+        // Decode the JSON response to an array
+        $song = json_decode($songResponse->getContent(), true);
+        
+        // Check if the song is already liked
+        if (isset($likedSongs[$songId])) {
+            // Song is already liked, so remove it
+            unset($likedSongs[$songId]);
+
+            // Update the user's record in the database
+            $user->update(['liked_songs' => $likedSongs]);
+            return response()->json(['message' => 'Song removed from liked songs.']);
+
+        } else {
+            // Song is not liked, so add it
+            // Create a JSON object for the song
+            $songObject = [
+                'id' => $songId,
+                'cover' => $song["cover"],
+                'title' => $song["title"],
+                'db' => "ListenUp",
+            ];
+            // Add the song object to the liked songs json
+            $likedSongs[$songId] = $songObject;
+
+            // Update the user's record in the database
+            $user->update(['liked_songs' => $likedSongs]);
+            return response()->json(['message' => 'Song added to liked songs.']);
+        }
+    }
+
+    public function addToPlaylist(Request $request) {
+        $user = Auth::user();
+        $playlist = $user->playlist ?? [];
+
+        // Get the song id from the request
+        $songId = $request->input('songId');
+
+        // Retrieves song metadata from MusicBrainz
+        $songResponse = $this->getSongDetailsFromListenUp($songId);
+        
+        // Decode the JSON response to an array
+        $song = json_decode($songResponse->getContent(), true);
+        
+        if (!isset($playlist[$songId])) {
+            // Song is not liked, so add it
+            // Create a JSON object for the song
+            $songObject = [
+                'id' => $songId,
+                'cover' => $song["cover"],
+                'title' => $song["title"],
+                'db' => "ListenUp",
+            ];
+            // Add the song object to the liked songs json
+            $playlist[$songId] = $songObject;
+
+            // Update the user's record in the database
+            $user->update(['playlist' => $playlist]);
+            return response()->json(['message' => 'Song added to playlist.']);
+        } else {
+            return response()->json(['message' => 'Song is already in your playlist']);
+        }
     }
 }

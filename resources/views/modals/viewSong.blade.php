@@ -43,11 +43,11 @@
                         <h2 style="color: black;">${song.title}</h2>
                         <p style="color: black;">Artist: ${song.artist}</p>
                         <a href="${song.song_link}" target="_blank">Play</a>
-                        <button onclick="likeSong('${song.id}', this)">
-                            <i class="${song.hasLikedSong ? ' fas' : 'far'} fa-heart heart"></i>
+                        <button onclick="likeTrack('${song.id}', this)">
+                            <i class="${song.hasLikedSong ? 'fas' : 'far'} fa-heart heart"></i>
                         </button>
                         <button onclick="reportTrack('${song.id}')" style="color: black;">!</button>
-                        <button onclick="addToPlaylist('${song.id}')" style="color: black;">+</button>
+                        <button onclick="addTrackToPlaylist('${song.id}')" style="color: black;">+</button>
                     `;
                     // Show the modal
                     $('#songModal').modal('show');
@@ -113,6 +113,38 @@
             console.error('Error adding song to liked songs:', error);
         });
     }
+
+    function likeTrack(songId, buttonElement) {
+        // Implement like functionality
+        console.log(`Liked song with ID: ${songId}`);
+        fetch('/like-track', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': @json(csrf_token()), // Include CSRF token if needed
+            },
+            body: JSON.stringify({
+                songId: songId,
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(`Liked song with ID: ${songId}2`);
+            const heartIcon = buttonElement.querySelector('.far.fa-heart') 
+                || buttonElement.querySelector('.fas.fa-heart');
+            if (heartIcon) {
+                console.log("HeartIcon found");
+                heartIcon.classList.toggle('fas');
+                heartIcon.classList.toggle('far');
+            } else {
+                console.log("HeartIcon not found");
+            }
+            alert(data.message);
+        })
+        .catch(error => {
+            console.error('Error adding song to liked songs:', error);
+        });
+    }
     
     function reportTrack(songId) {
         // Implement report functionality
@@ -140,6 +172,27 @@
         // Implement add to playlist functionality
         console.log(`Added song with ID ${songId} to playlist`);
         fetch('/add-to-playlist', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': @json(csrf_token()), // Include CSRF token if needed
+            },
+            body: JSON.stringify({
+                songId: songId,
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+        })
+        .catch(error => {
+            console.error('Error adding song to playlist:', error);
+        });
+    }
+    function addTrackToPlaylist(songId) {
+        // Implement add to playlist functionality
+        console.log(`Added song with ID ${songId} to playlist`);
+        fetch('/add-track-to-playlist', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

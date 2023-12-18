@@ -96,6 +96,9 @@ Route::middleware([
     Route::post('/delete-track', [TrackController::class, 'deleteTrack']);
     Route::post('/resolve-track', [TrackController::class, 'resolveTrack']);
     Route::get('/get-reported-tracks', [TrackController::class, 'getReportedTracks']);
+    
+    Route::post('/like-track', [TrackController::class, 'likeTrack']);
+    Route::post('/add-track-to-playlist', [TrackController::class, 'addToPlaylist']);
 });
 
 //for viewing music list
