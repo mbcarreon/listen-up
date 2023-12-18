@@ -36,7 +36,7 @@
 
                         if (Object.keys(playlist).length > 0) {
                             playlistList.innerHTML =
-                            `<h3>Playlist Name: {{ auth()->user()->playlist_name }} </h3>
+                            `<h3>Playlist Name: {{ $user->playlist_name }} </h3>
                                 <ul>
                                     ${Object.values(playlist).map(song => 
                                         `<a href="#" onclick="showSongModal('${song.id}'); return false;">
