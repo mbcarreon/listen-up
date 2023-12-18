@@ -16,10 +16,10 @@
         @if(auth()->user()->isAdmin() && !$user->isAdmin())
         <form method="POST" action="{{ route('make-admin', ['user' => $user->id]) }}">
             @csrf
-            <button type="submit" style="color: blue">Make Admin</button>
+            <button type="submit" class="btn" style="background-color: #aed581; color: #000;">Make Admin</button>
         </form>
         @endif
-        
+        <br> <br>
         <ul id="playlistList" style="white-space: nowrap; overflow-x: auto;"></ul>
         <ul id="likedSongsList" style="white-space: nowrap; overflow-x: auto;"></ul>
         <ul id="ratedSongsList" style="white-space: nowrap; overflow-x: auto;"></ul>

@@ -16,7 +16,7 @@
         <p>Location: {{ auth()->user()->location }}</p>
         <p>Birthdate: {{ auth()->user()->birthdate }}</p>
 
-        <a onClick="update()" href="javascript:void(0)" class="btn btn-info">Set up Profile</a>
+        <a onClick="update()" href="javascript:void(0)" class="btn" style="background-color: #aed581; color: #000;">Set up Profile</a>
         </td>
 
         <div>

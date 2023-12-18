@@ -130,7 +130,7 @@
                 placeholder="Enter artist name">
         </div>
 
-        <button class="btn btn-primary" onclick="searchArtist()">Search</button>
+        <button  onclick="searchArtist()" class="btn" style="background-color: #aed581; color: #000;">Search</button>
         <br>
         <br>
 
