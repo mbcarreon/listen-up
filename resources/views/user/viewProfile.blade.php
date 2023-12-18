@@ -112,5 +112,10 @@
             displayLikedSongs();
             displayRatedSongs();
         </script>
+        @if(session('success'))
+    <script>
+        alert("{{ session('success') }}");
+    </script>
+@endif
     </x-slot>
 </x-app-layout>
